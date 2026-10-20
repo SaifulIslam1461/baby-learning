@@ -180,7 +180,7 @@
             </div>
         </section>
 
-        <!-- NEW SECTION: MY UPLOADED VIDEOS -->
+        <!-- UPLOADED VIDEOS SECTION -->
         <section id="myvideos" class="page-section">
             <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
                 <button onclick="showSection('home')" class="bg-white text-emerald-700 px-4 py-2 rounded-xl shadow font-bold flex items-center space-x-2 hover:bg-emerald-50">
@@ -199,7 +199,7 @@
                 <div id="videoContainer" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                     <!-- Uploaded video cards will render here -->
                 </div>
-                <div id="noVideoMsg" class="text-center py-12 text-gray-400">
+                <div id="noVideoMsg" class="text-center py-12 text-gray-400 hidden">
                     <i class="fa-solid fa-film text-5xl mb-3 block"></i>
                     <p class="font-bold">এখনো কোনো ভিডিও আপলোড করা হয়নি।</p>
                     <p class="text-sm">উপরের "ভিডিও যোগ করুন" বাটনে ক্লিক করে ডিভাইস থেকে একাধিক ভিডিও সিলেক্ট করুন।</p>
@@ -501,7 +501,7 @@
 
                 <h3 class="text-xl font-bold text-emerald-900 mb-3 border-b pb-2"><i class="fa-solid fa-video mr-2"></i>ভিডিও ম্যানেজমেন্ট</h3>
                 <div class="bg-emerald-50 p-4 rounded-2xl border-2 border-dashed border-emerald-300 text-center mb-6">
-                    <p class="text-sm text-gray-600 mb-3 font-bold">শিশুর পছন্দ অনুযায়ী একাধিক ভিডিও ফোন থেকে আপলোড করুন</p>
+                    <p class="text-sm text-gray-600 mb-3 font-bold">শিশুর পছন্দ অনুযায়ী একাধিক ভিডিও ফোন থেকে স্থায়ীভাবে আপলোড করুন</p>
                     <label for="parentVideoInput" class="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-2.5 rounded-xl font-bold text-sm inline-flex items-center space-x-2 cursor-pointer shadow">
                         <i class="fa-solid fa-plus"></i>
                         <span>একাধিক ভিডিও আপলোড করুন</span>
@@ -582,6 +582,7 @@
         let uploadedVideosList = [];
 
         updatePointsDisplay();
+        initIndexedDB();
 
         function addPoints(pts) {
             userPoints += pts;
@@ -611,34 +612,73 @@
         }
 
         // ==========================================
-        // MULTIPLE VIDEO UPLOAD & GALLERY SYSTEM
+        // PERMANENT INDEXEDDB STORAGE FOR VIDEOS
         // ==========================================
+        let db;
+        function initIndexedDB() {
+            const request = indexedDB.open("SonamoniVideoDB", 1);
+            request.onerror = function(event) {
+                console.error("IndexedDB error: " + event.target.errorCode);
+            };
+            request.onsuccess = function(event) {
+                db = event.target.result;
+                loadVideosFromDB();
+            };
+            request.onupgradeneeded = function(event) {
+                let db = event.target.result;
+                if (!db.objectStoreNames.contains("videos")) {
+                    db.createObjectStore("videos", { keyPath: "id" });
+                }
+            };
+        }
+
         function handleVideoUpload(event) {
             const files = event.target.files;
             if (!files || files.length === 0) return;
 
+            let transaction = db.transaction(["videos"], "readwrite");
+            let store = transaction.objectStore("videos");
+
+            let countAdded = 0;
             for (let i = 0; i < files.length; i++) {
                 const file = files[i];
-                const videoUrl = URL.createObjectURL(file);
-                uploadedVideosList.push({
-                    id: Date.now() + "_" + i,
+                const videoObj = {
+                    id: "vid_" + Date.now() + "_" + i,
                     name: file.name.replace(/\.[^/.]+$/, ""),
-                    url: videoUrl,
+                    blob: file,
                     size: (file.size / (1024 * 1024)).toFixed(1) + " MB"
-                });
-            }
+                };
 
-            renderUploadedVideos();
-            showSection('myvideos');
-            addPoints(5 * files.length); // Bonus points for uploading
-            alert(`মাশাআল্লাহ! ${files.length} টি নতুন ভিডিও সফলভাবে যুক্ত হয়েছে!`);
+                let request = store.put(videoObj);
+                request.onsuccess = function() {
+                    countAdded++;
+                    if(countAdded === files.length) {
+                        loadVideosFromDB();
+                        showSection('myvideos');
+                        addPoints(5 * files.length);
+                        alert(`মাশাআল্লাহ! ${files.length} টি নতুন ভিডিও স্থায়ীভাবে সংরক্ষিত হয়েছে!`);
+                    }
+                };
+            }
+        }
+
+        function loadVideosFromDB() {
+            if (!db) return;
+            let transaction = db.transaction(["videos"], "readonly");
+            let store = transaction.objectStore("videos");
+            let request = store.getAll();
+
+            request.onsuccess = function(event) {
+                uploadedVideosList = event.target.result;
+                renderUploadedVideos();
+            };
         }
 
         function renderUploadedVideos() {
             const container = document.getElementById('videoContainer');
             const noMsg = document.getElementById('noVideoMsg');
 
-            if (uploadedVideosList.length === 0) {
+            if (!uploadedVideosList || uploadedVideosList.length === 0) {
                 container.innerHTML = '';
                 noMsg.classList.remove('hidden');
                 return;
@@ -648,6 +688,7 @@
             container.innerHTML = '';
 
             uploadedVideosList.forEach((v, idx) => {
+                let videoUrl = URL.createObjectURL(v.blob);
                 container.innerHTML += `
                     <div class="bg-emerald-50 rounded-2xl p-4 border-2 border-emerald-200 shadow hover:shadow-lg transition flex flex-col justify-between">
                         <div>
@@ -677,7 +718,7 @@
 
             document.getElementById('localVideoTitle').innerHTML = `<i class="fa-solid fa-film"></i> <span class="truncate">${video.name}</span>`;
             const player = document.getElementById('localVideoPlayer');
-            player.src = video.url;
+            player.src = URL.createObjectURL(video.blob);
             document.getElementById('localVideoModal').classList.remove('hidden');
             player.play();
         }
@@ -690,9 +731,13 @@
         }
 
         function deleteVideo(id) {
-            if(confirm('আপনি কি এই ভিডিওটি মুছে ফেলতে চান?')) {
-                uploadedVideosList = uploadedVideosList.filter(item => item.id !== id);
-                renderUploadedVideos();
+            if(confirm('আপনি কি এই ভিডিওটি চিরতরে মুছে ফেলতে চান?')) {
+                let transaction = db.transaction(["videos"], "readwrite");
+                let store = transaction.objectStore("videos");
+                let request = store.delete(id);
+                request.onsuccess = function() {
+                    loadVideosFromDB();
+                };
             }
         }
 
