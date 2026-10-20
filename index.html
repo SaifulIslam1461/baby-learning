@@ -53,7 +53,6 @@
                 </div>
             </div>
             
-            <!-- User Stats & Quick Menu -->
             <div class="flex items-center space-x-4">
                 <div class="bg-emerald-800/80 px-3 py-1.5 rounded-full flex items-center space-x-2 border border-amber-400/50 shadow-inner">
                     <i class="fa-solid fa-star text-amber-300 animate-pulse"></i>
@@ -71,7 +70,6 @@
 
         <!-- 1. HOME SECTION -->
         <section id="home" class="page-section active">
-            <!-- Welcome Banner -->
             <div class="bg-gradient-to-r from-teal-500 via-emerald-500 to-green-600 rounded-3xl p-6 md:p-10 text-white shadow-xl mb-8 relative overflow-hidden flex flex-col md:flex-row items-center justify-between">
                 <div class="absolute right-0 bottom-0 opacity-10 text-9xl transform translate-x-6 translate-y-6">
                     <i class="fa-solid fa-quran"></i>
@@ -93,14 +91,12 @@
                 </div>
             </div>
 
-            <!-- Categories Grid (15 Sections) -->
             <h3 class="text-xl font-bold text-emerald-900 mb-4 flex items-center space-x-2">
                 <i class="fa-solid fa-shapes text-amber-600"></i>
                 <span>শিক্ষার বিভাগসমূহ</span>
             </h3>
             
             <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-                <!-- Cards -->
                 <div onclick="showSection('islamic')" class="bg-white p-5 rounded-2xl shadow-md hover:shadow-xl border-b-4 border-emerald-500 cursor-pointer transition transform hover:-translate-y-1 flex flex-col items-center text-center">
                     <div class="w-14 h-14 bg-emerald-100 text-emerald-600 rounded-2xl flex items-center justify-center text-2xl mb-3 shadow-inner"><i class="fa-solid fa-mosque"></i></div>
                     <h4 class="font-bold text-gray-800 text-sm md:text-base">ইসলামিক শিক্ষা</h4>
@@ -179,7 +175,6 @@
             </div>
         </section>
 
-
         <!-- 2. ISLAMIC EDUCATION SECTION -->
         <section id="islamic" class="page-section">
             <div class="flex items-center justify-between mb-6">
@@ -192,55 +187,39 @@
                 <div class="bg-white p-6 rounded-2xl shadow-md border-l-8 border-emerald-500">
                     <h3 class="text-xl font-bold text-emerald-800 mb-3"><i class="fa-solid fa-star-and-crescent mr-2"></i>আল্লাহ তাআলা এক ও অদ্বিতীয়</h3>
                     <p class="text-gray-600 leading-relaxed">আল্লাহ আমাদের সৃষ্টি করেছেন। তিনি আমাদের রিজিক দেন, ভালোবাসেন এবং সবকিছু দেখেন। আমরা শুধু তারই ইবাদত করব।</p>
-                    <button onclick="speakText('সোনামণি শোনো, আল্লাহ আমাদের সৃষ্টি করেছেন। তিনি আমাদের অনেক ভালোবাসেন এবং রিজিক দেন।', 'bn-BD')" class="mt-4 bg-emerald-100 text-emerald-700 px-3 py-1.5 rounded-lg text-sm font-bold flex items-center space-x-2 hover:bg-emerald-200">
+                    <button onclick="speakInteractive('আল্লাহ তাআলা এক ও অদ্বিতীয়', 'আল্লাহ আমাদের সৃষ্টি করেছেন। তিনি আমাদের ভালোবাসেন।', 'bn-BD')" class="mt-4 bg-emerald-100 text-emerald-700 px-3 py-1.5 rounded-lg text-sm font-bold flex items-center space-x-2 hover:bg-emerald-200">
                         <i class="fa-solid fa-volume-high"></i> <span>শুনো</span>
                     </button>
                 </div>
                 <div class="bg-white p-6 rounded-2xl shadow-md border-l-8 border-amber-500">
                     <h3 class="text-xl font-bold text-amber-800 mb-3"><i class="fa-solid fa-heart mr-2"></i>আমাদের প্রিয় নবী মুহাম্মদ ﷺ</h3>
                     <p class="text-gray-600 leading-relaxed">আমাদের শেষ নবী হযরত মুহাম্মদ ﷺ। তিনি আমাদের সুন্দর চরিত্র ও ইসলামের সঠিক পথ শিখিয়েছেন। তার ওপর আমাদের অনেক দরুদ পাঠ করা উচিত।</p>
-                    <button onclick="speakText('আমাদের শেষ নবী হযরত মুহাম্মদ সাল্লাল্লাহু আলাইহি ওয়া সাল্লাম। চলো উনার ওপর দরূদ পড়ি।', 'bn-BD')" class="mt-4 bg-amber-100 text-amber-800 px-3 py-1.5 rounded-lg text-sm font-bold flex items-center space-x-2 hover:bg-amber-200">
-                        <i class="fa-solid fa-volume-high"></i> <span>শুনো</span>
-                    </button>
-                </div>
-                <div class="bg-white p-6 rounded-2xl shadow-md border-l-8 border-teal-500">
-                    <h3 class="text-xl font-bold text-teal-800 mb-3"><i class="fa-solid fa-hands-holding-child mr-2"></i>বাবা-মায়ের প্রতি সদাচরণ</h3>
-                    <p class="text-gray-600 leading-relaxed">পিতা-মাতা আমাদের অনেক যত্ন নেন। তাদের সাথে সবসময় আদবের সাথে কথা বলতে হবে এবং তাদের সেবা করতে হবে।</p>
-                    <button onclick="speakText('পিতা-মাতার সাথে সবসময় মিষ্টি করে ভালো ব্যবহার করতে হয়, ঠিক আছে?', 'bn-BD')" class="mt-4 bg-teal-100 text-teal-800 px-3 py-1.5 rounded-lg text-sm font-bold flex items-center space-x-2 hover:bg-teal-200">
-                        <i class="fa-solid fa-volume-high"></i> <span>শুনো</span>
-                    </button>
-                </div>
-                <div class="bg-white p-6 rounded-2xl shadow-md border-l-8 border-blue-500">
-                    <h3 class="text-xl font-bold text-blue-800 mb-3"><i class="fa-solid fa-shield-halved mr-2"></i>সত্য কথা বলা ও মিথ্যা বর্জন</h3>
-                    <p class="text-gray-600 leading-relaxed">মিথ্যা বলা মহাপাপ। আল্লাহ সত্যবাদীদের ভালোবাসেন। আমরা সবসময় সত্য কথা বলব এবং মিথ্যা থেকে দূরে থাকব।</p>
-                    <button onclick="speakText('লক্ষ্মী সোনামণি, আমরা কিন্তু সবসময় সত্য কথা বলবো, কখনও মিথ্যা বলবো না।', 'bn-BD')" class="mt-4 bg-blue-100 text-blue-800 px-3 py-1.5 rounded-lg text-sm font-bold flex items-center space-x-2 hover:bg-blue-200">
+                    <button onclick="speakInteractive('আমাদের প্রিয় নবী হযরত মুহাম্মদ সাল্লাল্লাহু আলাইহি ওয়া সাল্লাম', 'নবীজি আমাদের সুন্দর চরিত্র শিখিয়েছেন।', 'bn-BD')" class="mt-4 bg-amber-100 text-amber-800 px-3 py-1.5 rounded-lg text-sm font-bold flex items-center space-x-2 hover:bg-amber-200">
                         <i class="fa-solid fa-volume-high"></i> <span>শুনো</span>
                     </button>
                 </div>
             </div>
         </section>
 
-
-        <!-- 3. BENGALI ALPHABET SECTION -->
+        <!-- 3. BENGALI ALPHABET SECTION (ISLAMIC BOX SYSTEM) -->
         <section id="bengali" class="page-section">
             <div class="flex items-center justify-between mb-6">
                 <button onclick="showSection('home')" class="bg-white text-emerald-700 px-4 py-2 rounded-xl shadow font-bold flex items-center space-x-2 hover:bg-emerald-50">
                     <i class="fa-solid fa-arrow-left"></i> <span>হোমে ফিরে যাও</span>
                 </button>
-                <h2 class="text-2xl font-bold text-emerald-900">বাংলা বর্ণমালা শিক্ষা</h2>
+                <h2 class="text-2xl font-bold text-emerald-900">বাংলা বর্ণমালা (ইসলামিক ছবি সহ)</h2>
             </div>
             
             <div class="bg-white p-6 rounded-2xl shadow-md mb-6">
-                <h3 class="text-lg font-bold text-pink-600 mb-3">স্বরবর্ণ (অ - ঔ)</h3>
-                <div id="sworobornoGrid" class="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-9 gap-3"></div>
+                <h3 class="text-lg font-bold text-pink-600 mb-4 border-b pb-2">স্বরবর্ণ (অ - ঔ)</h3>
+                <div id="sworobornoGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4"></div>
             </div>
 
             <div class="bg-white p-6 rounded-2xl shadow-md">
-                <h3 class="text-lg font-bold text-emerald-600 mb-3">ব্যঞ্জনবর্ণ (ক - ঁ)</h3>
-                <div id="byanjonbornoGrid" class="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-9 gap-3"></div>
+                <h3 class="text-lg font-bold text-emerald-600 mb-4 border-b pb-2">ব্যঞ্জনবর্ণ (ক - ঁ)</h3>
+                <div id="byanjonbornoGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4"></div>
             </div>
         </section>
-
 
         <!-- 4. ENGLISH ALPHABET SECTION -->
         <section id="english" class="page-section">
@@ -248,11 +227,10 @@
                 <button onclick="showSection('home')" class="bg-white text-emerald-700 px-4 py-2 rounded-xl shadow font-bold flex items-center space-x-2 hover:bg-emerald-50">
                     <i class="fa-solid fa-arrow-left"></i> <span>হোমে ফিরে যাও</span>
                 </button>
-                <h2 class="text-2xl font-bold text-emerald-900">English Alphabet (A to Z)</h2>
+                <h2 class="text-2xl font-bold text-emerald-900">English Alphabet (Islamic Mind)</h2>
             </div>
             <div id="englishGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4"></div>
         </section>
-
 
         <!-- 5. ARABIC ALPHABET SECTION -->
         <section id="arabic" class="page-section">
@@ -265,7 +243,6 @@
             <div id="arabicGrid" class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-4"></div>
         </section>
 
-
         <!-- 6. NUMBERS SECTION -->
         <section id="numbers" class="page-section">
             <div class="flex items-center justify-between mb-6">
@@ -276,7 +253,6 @@
             </div>
             <div id="numbersGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4"></div>
         </section>
-
 
         <!-- 7. MATH SECTION -->
         <section id="math" class="page-section">
@@ -294,7 +270,6 @@
             </div>
         </section>
 
-
         <!-- 8. DUA & ZIKIR SECTION -->
         <section id="dua" class="page-section">
             <div class="flex items-center justify-between mb-6">
@@ -305,7 +280,6 @@
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="duaContainer"></div>
         </section>
-
 
         <!-- 9. PRAYER & WUDU SECTION -->
         <section id="namaz" class="page-section">
@@ -338,7 +312,6 @@
             </div>
         </section>
 
-
         <!-- 10. PROPHETS STORIES SECTION -->
         <section id="stories" class="page-section">
             <div class="flex items-center justify-between mb-6">
@@ -359,7 +332,6 @@
             </div>
         </section>
 
-
         <!-- 11. ANIMALS & NATURE SECTION -->
         <section id="animals" class="page-section">
             <div class="flex items-center justify-between mb-6">
@@ -369,29 +341,28 @@
                 <h2 class="text-2xl font-bold text-emerald-900">পশুপাখি ও প্রকৃতি</h2>
             </div>
             <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
-                <div onclick="speakText('গরু! এটি আমাদের মিষ্টি দুধ দেয়। হাম্বা হাম্বা!', 'bn-BD')" class="bg-white p-5 rounded-2xl shadow text-center cursor-pointer hover:shadow-lg">
+                <div onclick="speakInteractive('গরু', 'গরু আমাদের মিষ্টি দুধ দেয়। হাম্বা হাম্বা!', 'bn-BD')" class="bg-white p-5 rounded-2xl shadow text-center cursor-pointer hover:shadow-lg">
                     <div class="text-4xl mb-2">🐄</div>
                     <h4 class="font-bold">গরু (Cow)</h4>
                     <p class="text-xs text-gray-500">দুধ দেয়</p>
                 </div>
-                <div onclick="speakText('ছাগল! এটি ঘাস খায়। ব্যা ব্যা করে ডাকে!', 'bn-BD')" class="bg-white p-5 rounded-2xl shadow text-center cursor-pointer hover:shadow-lg">
+                <div onclick="speakInteractive('ছাগল', 'ছাগল ঘাস খায়। ব্যা ব্যা করে ডাকে!', 'bn-BD')" class="bg-white p-5 rounded-2xl shadow text-center cursor-pointer hover:shadow-lg">
                     <div class="text-4xl mb-2">🐐</div>
                     <h4 class="font-bold">ছাগল (Goat)</h4>
                     <p class="text-xs text-gray-500">ঘাস খায়</p>
                 </div>
-                <div onclick="speakText('বিড়াল! কি মিষ্টি নরম বিড়াল, মিউ মিউ করে!', 'bn-BD')" class="bg-white p-5 rounded-2xl shadow text-center cursor-pointer hover:shadow-lg">
+                <div onclick="speakInteractive('বিড়াল', 'মিষ্টি নরম বিড়াল, মিউ মিউ করে!', 'bn-BD')" class="bg-white p-5 rounded-2xl shadow text-center cursor-pointer hover:shadow-lg">
                     <div class="text-4xl mb-2">🐈</div>
                     <h4 class="font-bold">বিড়াল (Cat)</h4>
                     <p class="text-xs text-gray-500">মিউ মিউ করে</p>
                 </div>
-                <div onclick="speakText('মোরগ! সকালে সুন্দর করে ডেকে আমাদের ঘুম ভাঙায়!', 'bn-BD')" class="bg-white p-5 rounded-2xl shadow text-center cursor-pointer hover:shadow-lg">
+                <div onclick="speakInteractive('মোরগ', 'সকালে সুন্দর করে ডেকে আমাদের ঘুম ভাঙায়!', 'bn-BD')" class="bg-white p-5 rounded-2xl shadow text-center cursor-pointer hover:shadow-lg">
                     <div class="text-4xl mb-2">🐓</div>
                     <h4 class="font-bold">মোরগ (Rooster)</h4>
                     <p class="text-xs text-gray-500">সকালে ডাকে</p>
                 </div>
             </div>
         </section>
-
 
         <!-- 12. COLORS & SHAPES SECTION -->
         <section id="colors" class="page-section">
@@ -402,13 +373,12 @@
                 <h2 class="text-2xl font-bold text-emerald-900">রং ও আকৃতি পরিচিতি</h2>
             </div>
             <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
-                <div onclick="speakText('লাল রং! Red color!', 'bn-BD')" class="bg-red-500 text-white p-6 rounded-2xl shadow text-center font-bold text-lg cursor-pointer">লাল (Red)</div>
-                <div onclick="speakText('নীল রং! Blue color!', 'bn-BD')" class="bg-blue-500 text-white p-6 rounded-2xl shadow text-center font-bold text-lg cursor-pointer">নীল (Blue)</div>
-                <div onclick="speakText('সবুজ রং! Green color!', 'bn-BD')" class="bg-green-500 text-white p-6 rounded-2xl shadow text-center font-bold text-lg cursor-pointer">সবুজ (Green)</div>
-                <div onclick="speakText('হলুদ রং! Yellow color!', 'bn-BD')" class="bg-yellow-400 text-gray-900 p-6 rounded-2xl shadow text-center font-bold text-lg cursor-pointer">হলুদ (Yellow)</div>
+                <div onclick="speakInteractive('লাল রং', 'লাল রং! Red color!', 'bn-BD')" class="bg-red-500 text-white p-6 rounded-2xl shadow text-center font-bold text-lg cursor-pointer">লাল (Red)</div>
+                <div onclick="speakInteractive('নীল রং', 'নীল রং! Blue color!', 'bn-BD')" class="bg-blue-500 text-white p-6 rounded-2xl shadow text-center font-bold text-lg cursor-pointer">নীল (Blue)</div>
+                <div onclick="speakInteractive('সবুজ রং', 'সবুজ রং! Green color!', 'bn-BD')" class="bg-green-500 text-white p-6 rounded-2xl shadow text-center font-bold text-lg cursor-pointer">সবুজ (Green)</div>
+                <div onclick="speakInteractive('হলুদ রং', 'হলুদ রং! Yellow color!', 'bn-BD')" class="bg-yellow-400 text-gray-900 p-6 rounded-2xl shadow text-center font-bold text-lg cursor-pointer">হলুদ (Yellow)</div>
             </div>
         </section>
-
 
         <!-- 13. EDUCATIONAL GAMES SECTION -->
         <section id="games" class="page-section">
@@ -427,7 +397,6 @@
             </div>
         </section>
 
-
         <!-- 14. QUIZ SECTION -->
         <section id="quiz" class="page-section">
             <div class="flex items-center justify-between mb-6">
@@ -445,7 +414,6 @@
             </div>
         </section>
 
-
         <!-- 15. DRAWING / WRITING PRACTICE SECTION -->
         <section id="drawing" class="page-section">
             <div class="flex items-center justify-between mb-6">
@@ -462,7 +430,6 @@
                 </div>
             </div>
         </section>
-
 
         <!-- 16. PARENT DASHBOARD SECTION -->
         <section id="parent" class="page-section">
@@ -521,7 +488,6 @@
 
     <!-- JavaScript Logic -->
     <script>
-        // Global App State & Points
         let userPoints = localStorage.getItem('sonamoni_points') ? parseInt(localStorage.getItem('sonamoni_points')) : 0;
         updatePointsDisplay();
 
@@ -546,58 +512,58 @@
             }
         }
 
-        // Section Navigation
         function showSection(sectionId) {
             document.querySelectorAll('.page-section').forEach(sec => sec.classList.remove('active'));
             document.getElementById(sectionId).classList.add('active');
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // ==========================================
-        //  ADVANCED KIDS-FRIENDLY SPEECH SYNTHESIS
-        // ==========================================
-        function speakText(text, langCode = 'bn-BD') {
-            if ('speechSynthesis' in window) {
-                window.speechSynthesis.cancel(); // পূর্ববর্তী কথা বন্ধ করা
+        // =========================================================================
+        //  ADVANCED INTERACTIVE VOICE SYSTEM (APU VOICE + KIDS RESPONSE ECHO)
+        // =========================================================================
+        function speakInteractive(letterName, topicWord, langCode = 'bn-BD') {
+            if (!('speechSynthesis' in window)) return;
+            window.speechSynthesis.cancel();
 
-                const utterance = new SpeechSynthesisUtterance(text);
-                
-                // শিশুদের সহজের জন্য ধীর গতি
-                utterance.rate = 0.75; 
-                // মিষ্টি ও আদুরে কণ্ঠের জন্য উঁচু পিচ
-                utterance.pitch = 1.35; 
-
-                const voices = window.speechSynthesis.getVoices();
-                let selectedVoice = null;
-
-                if (langCode.startsWith('bn')) {
-                    utterance.lang = 'bn-BD';
-                    selectedVoice = voices.find(v => v.lang.includes('bn') && (v.name.includes('Female') || v.name.includes('Google') || v.name.includes('Natural')));
-                } else if (langCode.startsWith('en')) {
-                    utterance.lang = 'en-US';
-                    selectedVoice = voices.find(v => v.lang.includes('en') && (v.name.includes('Female') || v.name.includes('Google') || v.name.includes('Zira')));
-                } else if (langCode.startsWith('ar')) {
-                    utterance.lang = 'ar-SA';
-                    selectedVoice = voices.find(v => v.lang.includes('ar'));
-                }
-
-                if (selectedVoice) {
-                    utterance.voice = selectedVoice;
-                }
-
-                window.speechSynthesis.speak(utterance);
-                addPoints(1);
+            const voices = window.speechSynthesis.getVoices();
+            
+            // 1st Step: Apu's Sweet Voice (Teacher Mode)
+            let apuText = `${letterName}! ${letterName} তে ${topicWord}। চলো সোনামণিরা একসাথে বলি, ${letterName} তে ${topicWord}`;
+            if(langCode.startsWith('en')) {
+                apuText = `${letterName}! ${letterName} for ${topicWord}. Say with me children, ${letterName} for ${topicWord}`;
             }
+
+            const apuUtterance = new SpeechSynthesisUtterance(apuText);
+            apuUtterance.rate = 0.75;  // Slow rate for kids
+            apuUtterance.pitch = 1.35; // Sweet high pitch (Apu tone)
+
+            let apuVoice = voices.find(v => v.lang.includes(langCode.split('-')[0]) && (v.name.includes('Female') || v.name.includes('Google') || v.name.includes('Natural')));
+            if (apuVoice) apuUtterance.voice = apuVoice;
+
+            // 2nd Step: Kids Choir / Response Echo (Higher Pitch & Excited Tone)
+            const kidsUtterance = new SpeechSynthesisUtterance(`${letterName} তে ${topicWord}!`);
+            kidsUtterance.rate = 0.85;  
+            kidsUtterance.pitch = 1.6;  // Extra high pitch for kids voice simulation
+
+            if (apuVoice) kidsUtterance.voice = apuVoice;
+
+            // Execute Sequentially
+            apuUtterance.onend = function() {
+                setTimeout(() => {
+                    window.speechSynthesis.speak(kidsUtterance);
+                }, 300); // Short pause before kids repeat
+            };
+
+            window.speechSynthesis.speak(apuUtterance);
+            addPoints(1);
         }
 
-        // ব্রাউজারে ভয়েস প্রি-লোড রাখা
         if ('speechSynthesis' in window) {
             window.speechSynthesis.onvoiceschanged = () => {
                 window.speechSynthesis.getVoices();
             };
         }
 
-        // Dark/Light Theme Toggle
         let isDarkMode = false;
         function toggleDarkMode() {
             isDarkMode = !isDarkMode;
@@ -614,81 +580,107 @@
             }
         }
 
-        // Interactive Rhymes for Bengali Sworoborno
-        const sworoMap = [
-            { c: 'অ', t: 'অ তে অজগর আসছে তেড়ে! বলো তো সোনামণি, অ' },
-            { c: 'আ', t: 'আ তে আমটি খাবো পেরে! বলো, আ' },
-            { c: 'ই', t: 'ই তে ইঁদুর ছানা ভয়ে মরে! বলো, ই' },
-            { c: 'ঈ', t: 'ঈ তে ঈগল পাখি আকাশে ওড়ে! বলো, ঈ' },
-            { c: 'উ', t: 'উ তে উট চলেছে মুখ তুলে! বলো, উ' },
-            { c: 'ঊ', t: 'ঊ তে ঊষা হাসে পুব আকাশে! বলো, ঊ' },
-            { c: 'ঋ', t: 'ঋ তে ঋষি মশাই বসেন পূজায়! বলো, ঋ' },
-            { c: 'এ', t: 'এ তে একাগাড়ী খুব ছুটেছে! বলো, এ' },
-            { c: 'ঐ', t: 'ঐ তে ঐরাবত চলেছে ঢুলে! বলো, ঐ' },
-            { c: 'ও', t: 'ও তে ওল খেও না ধরবে গলা! বলো, ও' },
-            { c: 'ঔ', t: 'ঔ তে ঔষধ খেতে মিছে বলা! বলো, ঔ' }
+        // ISLAMIC MINDED SWOROBORNO DATA WITH ICONS
+        const sworoIslamicData = [
+            { c: 'অ', w: 'আল্লাহর অলি', icon: '🕋' },
+            { c: 'আ', w: 'আজান', icon: '🕌' },
+            { c: 'ই', w: 'ইবাদত', icon: '📿' },
+            { c: 'ঈ', w: 'ঈদুল ফিতর', icon: '🌙' },
+            { c: 'উ', w: 'ওজু (উজু)', icon: '💧' },
+            { c: 'ঊ', w: 'ঊষা', icon: '🌅' },
+            { c: 'ঋ', w: 'ঋজু (সহজ পথ)', icon: '🛣️' },
+            { c: 'এ', w: 'একতা', icon: '🤝' },
+            { c: 'ঐ', w: 'ঐক্য', icon: '👥' },
+            { c: 'ও', w: 'ওহী', icon: '📖' },
+            { c: 'ঔ', w: 'ঔদার্য', icon: '❤️' }
         ];
 
         const sworoContainer = document.getElementById('sworobornoGrid');
-        sworoMap.forEach(item => {
-            sworoContainer.innerHTML += `<div onclick="speakText('${item.t}', 'bn-BD')" class="bg-pink-50 hover:bg-pink-100 border-2 border-pink-300 p-4 rounded-xl text-center text-2xl font-bold cursor-pointer transition transform hover:scale-105 text-pink-700 shadow-sm">${item.c}</div>`;
+        sworoIslamicData.forEach(item => {
+            sworoContainer.innerHTML += `
+                <div onclick="speakInteractive('${item.c}', '${item.w}', 'bn-BD')" class="bg-pink-50 hover:bg-pink-100 border-2 border-pink-300 p-4 rounded-2xl text-center cursor-pointer transition transform hover:scale-105 shadow-sm flex flex-col items-center justify-center">
+                    <div class="text-3xl font-extrabold text-pink-600 mb-1">${item.c}</div>
+                    <div class="text-2xl my-1">${item.icon}</div>
+                    <div class="text-xs font-bold text-gray-700">${item.w}</div>
+                </div>`;
         });
 
-        // Interactive Rhymes for Byanjonborno
-        const byanjonData = [
-            { c: 'ক', t: 'ক তে কলা! মিষ্টি কলা খেতে ভালো। বলো, ক' },
-            { c: 'খ', t: 'খ তে খরগোশ! খরগোশ ছানা লাফিয়ে চলে। বলো, খ' },
-            { c: 'গ', t: 'গ তে গরু! গরু আমাদের দুধ দেয়। বলো, গ' },
-            { c: 'ঘ', t: 'ঘ তে ঘোড়া! ঘোড়া ছোটে টগবগিয়ে। বলো, ঘ' },
-            { c: 'ঙ', t: 'ঙ তে ব্যাঙ! ব্যাঙ ডাকে ঘেঙর ঘেঙ। বলো, ঙ' },
-            { c: 'চ', t: 'চ তে চাঁদ! চাঁদ উঠেছে আকাশে। বলো, চ' },
-            { c: 'ছ', t: 'ছ তে ছাতা! বৃষ্টি এলে ছাতা লাগে। বলো, ছ' },
-            { c: 'জ', t: 'জ তে জাহাজ! জাহাজ চলে সাগরে। বলো, জ' },
-            { c: 'ঝ', t: 'ঝ তে ঝরনা! ঝরনা বয় ঝিরঝিরিয়ে। বলো, ঝ' },
-            { c: 'ঞ', t: 'ঞ তে মিঞা! মিঞা ভাই দাঁড়ায় সুখে। বলো, ঞ' },
-            { c: 'ট', t: 'ট তে টাকা! বলো, ট' }, { c: 'ঠ', t: 'ঠ তে ঠোঁট! বলো, ঠ' },
-            { c: 'ড', t: 'ড তে ডাব! ডাবের পানি মিষ্টি ভারি। বলো, ড' }, { c: 'ঢ', t: 'ঢ তে ঢোল! বলো, ঢ' },
-            { c: 'ণ', t: 'ণ তে হরিণ! হরিণ থাকে বনে। বলো, ণ' }, { c: 'ত', t: 'ত তে তরমুজ! তরমুজ খেতে ভারি মজা। বলো, ত' },
-            { c: 'থ', t: 'থ তে থালা! বলো, থ' }, { c: 'দ', d: 'দ তে দই! বলো, দ' },
-            { c: 'ধ', t: 'ধ তে ধান! বলো, ধ' }, { c: 'ন', t: 'ন তে নদী! বলো, ন' },
-            { c: 'প', t: 'প তে পাখি! পাখি ওড়ে ডানা মেলে। বলো, প' }, { c: 'ফ', t: 'ফ তে ফুল! ফুল ফোটে বাগানে। বলো, ফ' },
-            { c: 'ব', t: 'ব তে বই! আমরা নতুন বই পড়ি। বলো, ব' }, { c: 'ভ', t: 'ভ তে ভালুক! বলো, ভ' },
-            { c: 'ম', t: 'ম তে মাছ! মাছ থাকে পানিতে। বলো, ম' }, { c: 'য', t: 'য তে যাঁতা! বলো, য' },
-            { c: 'র', t: 'র তে রথ! বলো, র' }, { c: 'ল', t: 'ল তে লিচু! লাল লাল মিষ্টি লিচু। বলো, ল' },
-            { c: 'শ', t: 'শ তে শাপলা! শাপলা আমাদের জাতীয় ফুল। বলো, শ' }, { c: 'ষ', t: 'ষ তে ষাঁড়! বলো, ষ' },
-            { c: 'স', t: 'স তে সিংহ! সিংহ বনের রাজা। বলো, স' }, { c: 'হ', t: 'হ তে হাতি! হাতি চলে হেলেদুলে। বলো, হ' },
-            { c: 'ড়', t: 'ড়! বলো, ড়' }, { c: 'ঢ়', t: 'ঢ়! বলো, ঢ়' }, { c: 'য়', t: 'য়! বলো, য়' },
-            { c: 'ৎ', t: 'ৎ! বলো, ৎ' }, { c: 'ং', t: 'অনুস্বার!' }, { c: 'ঃ', t: 'বিসর্গ!' }, { c: 'ঁ', t: 'চন্দ্রবিন্দু!' }
+        // ISLAMIC MINDED BYANJONBORNO DATA WITH ICONS
+        const byanjonIslamicData = [
+            { c: 'ক', w: 'কাবা শরীফ', icon: '🕋' },
+            { c: 'খ', w: 'খেদমত', icon: '🤲' },
+            { c: 'গ', w: 'জ্ঞান অর্জন', icon: '📚' },
+            { c: 'ঘ', w: 'ঘোড়া (জিহাদ)', icon: '🐎' },
+            { c: 'ঙ', w: 'ঙ (সুন্দর মন)', icon: '✨' },
+            { c: 'চ', w: 'চাঁদ (রমজান)', icon: '🌙' },
+            { c: 'ছ', w: 'ছাদাকা (দান)', icon: '🪙' },
+            { c: 'জ', w: 'জাকাত', icon: '💰' },
+            { c: 'ঝ', w: 'ঝরনা (জান্নাত)', icon: '🏞️' },
+            { c: 'ঞ', w: 'ঞ (নম্রতা)', icon: '🌸' },
+            { c: 'ট', w: 'টুপি', icon: '🧢' },
+            { c: 'ঠ', w: 'ঠাঁই (মসজিদ)', icon: '🕌' },
+            { c: 'ড', w: 'ডালিম (জান্নাতী ফল)', icon: '🍎' },
+            { c: 'ঢ', w: 'ঢাল (ঈমান)', icon: '🛡️' },
+            { c: 'ণ', w: 'ণ (শালীনতা)', icon: '🕊️' },
+            { c: 'ত', w: 'তাকওয়া', icon: '🤍' },
+            { c: 'থ', w: 'থোবা (তওবা)', icon: '🙏' },
+            { c: 'দ', w: 'দোয়া', icon: '🤲' },
+            { c: 'ধ', w: 'ধর্ম (ইসলাম)', icon: '☪️' },
+            { c: 'ন', w: 'নামাজ', icon: '🛐' },
+            { c: 'প', w: 'পবিত্রতা', icon: '🧼' },
+            { c: 'ফ', w: 'ফেরেশতা', icon: '👼' },
+            { c: 'ব', w: 'বই (কুরআন)', icon: '📖' },
+            { c: 'ভ', w: 'ভালো ব্যবহার', icon: '😊' },
+            { c: 'ম', w: 'মসজিদ', icon: '🕌' },
+            { c: 'য', w: 'যিকির', icon: '📿' },
+            { c: 'র', w: 'রমজান', icon: '🌙' },
+            { c: 'ল', w: 'লজ্জাশীলতা', icon: '🙈' },
+            { c: 'শ', w: 'শান্তি (ইসলাম)', icon: '🕊️' },
+            { c: 'ষ', w: 'ষড়ঋতু', icon: '🌿' },
+            { c: 'স', w: 'সত্য কথা', icon: '💬' },
+            { c: 'হ', w: 'হজ', icon: '🕋' },
+            { c: 'ড়', w: 'পড়ো (ইকরা)', icon: '📖' },
+            { c: 'ঢ়', w: 'দৃঢ় ঈমান', icon: '💪' },
+            { c: 'য়', w: 'দয়া', icon: '💖' },
+            { c: 'ৎ', w: 'সৎ কাজ', icon: '🌟' },
+            { c: 'ং', w: 'অংশগ্রহণ', icon: '🙋' },
+            { c: 'ঃ', w: 'দুঃখ প্রকাশ', icon: '😔' },
+            { c: 'ঁ', w: 'চাঁদ তারা', icon: '⭐' }
         ];
 
         const byanContainer = document.getElementById('byanjonbornoGrid');
-        byanjonData.forEach(item => {
-            const textToSpeak = item.t || (item.c + '। বলো, ' + item.c);
-            byanContainer.innerHTML += `<div onclick="speakText('${textToSpeak}', 'bn-BD')" class="bg-emerald-50 hover:bg-emerald-100 border-2 border-emerald-300 p-4 rounded-xl text-center text-2xl font-bold cursor-pointer transition transform hover:scale-105 text-emerald-700 shadow-sm">${item.c}</div>`;
+        byanjonIslamicData.forEach(item => {
+            byanContainer.innerHTML += `
+                <div onclick="speakInteractive('${item.c}', '${item.w}', 'bn-BD')" class="bg-emerald-50 hover:bg-emerald-100 border-2 border-emerald-300 p-4 rounded-2xl text-center cursor-pointer transition transform hover:scale-105 shadow-sm flex flex-col items-center justify-center">
+                    <div class="text-3xl font-extrabold text-emerald-700 mb-1">${item.c}</div>
+                    <div class="text-2xl my-1">${item.icon}</div>
+                    <div class="text-xs font-bold text-gray-700">${item.w}</div>
+                </div>`;
         });
 
-        // Interactive English Alphabet
-        const englishData = [
-            {l: 'A', s: 'Apple', b: 'আপেল', t: 'A for Apple! Apple মানে আপেল। বলো, A' },
-            {l: 'B', s: 'Ball', b: 'বল', t: 'B for Ball! Ball মানে খেলার বল। বলো, B' },
-            {l: 'C', s: 'Cat', b: 'বিড়াল', t: 'C for Cat! Cat মানে মিষ্টি বিড়াল। বলো, C' },
-            {l: 'D', s: 'Dog', b: 'কুকুর', t: 'D for Dog! Dog মানে কুকুর। বলো, D' },
-            {l: 'E', s: 'Elephant', b: 'হাতি', t: 'E for Elephant! Elephant মানে বড় হাতি। বলো, E' },
-            {l: 'F', s: 'Fish', b: 'মাছ', t: 'F for Fish! Fish মানে মাছ। বলো, F' },
-            {l: 'G', s: 'Goat', b: 'ছাগল', t: 'G for Goat! Goat মানে ছাগল। বলো, G' },
-            {l: 'H', s: 'Hat', b: 'টুপি', t: 'H for Hat! Hat মানে সুন্দর টুপি। বলো, H' },
-            {l: 'I', s: 'Ice cream', b: 'আইসক্রিম', t: 'I for Ice cream! ইয়াম্মী আইসক্রিম। বলো, I' },
-            {l: 'J', s: 'Jug', b: 'জগ', t: 'J for Jug! Jug মানে পানি রাখার জগ। বলো, J' },
-            {l: 'K', s: 'Kite', b: 'ঘুড়ি', t: 'K for Kite! Kite মানে ঘুড়ি। বলো, K' },
-            {l: 'L', s: 'Lion', b: 'সিংহ', t: 'L for Lion! Lion মানে বনের রাজা সিংহ। বলো, L' }
+        // ISLAMIC ENGLISH ALPHABET
+        const englishIslamicData = [
+            {l: 'A', w: 'Allah', icon: '✨'},
+            {l: 'B', w: 'Bismillah', icon: '📖'},
+            {l: 'C', w: 'Charity', icon: '🪙'},
+            {l: 'D', w: 'Dua', icon: '🤲'},
+            {l: 'E', w: 'Eid', icon: '🌙'},
+            {l: 'F', w: 'Fajr', icon: '🌅'},
+            {l: 'G', w: 'Good Deeds', icon: '🌟'},
+            {l: 'H', w: 'Hajj', icon: '🕋'},
+            {l: 'I', w: 'Islam', icon: '🕌'},
+            {l: 'J', w: 'Jannah', icon: '🏞️'},
+            {l: 'K', w: 'Kaaba', icon: '🕋'},
+            {l: 'L', w: 'Love for Prophet', icon: '❤️'}
         ];
+
         const engContainer = document.getElementById('englishGrid');
-        englishData.forEach(item => {
+        englishIslamicData.forEach(item => {
             engContainer.innerHTML += `
-                <div onclick="speakText('${item.t}', 'en-US')" class="bg-white border-2 border-blue-200 p-4 rounded-2xl text-center cursor-pointer transition transform hover:scale-105 shadow-md">
+                <div onclick="speakInteractive('${item.l}', '${item.w}', 'en-US')" class="bg-white border-2 border-blue-200 p-4 rounded-2xl text-center cursor-pointer transition transform hover:scale-105 shadow-md flex flex-col items-center justify-center">
                     <div class="text-3xl font-extrabold text-blue-600 mb-1">${item.l}</div>
-                    <div class="text-sm font-bold text-gray-700">${item.s}</div>
-                    <div class="text-xs text-gray-500">${item.b}</div>
+                    <div class="text-2xl my-1">${item.icon}</div>
+                    <div class="text-sm font-bold text-gray-700">${item.w}</div>
                 </div>`;
         });
 
@@ -696,13 +688,13 @@
         const arabicData = ['أ', 'ب', 'ت', 'ث', 'ج', 'ح', 'خ', 'د', 'ذ', 'ر', 'ز', 'س', 'ش', 'ص', 'ض', 'ط', 'ظ', 'ع', 'غ', 'ف', 'ق', 'ك', 'ل', 'م', 'ن', 'هـ', 'و', 'ي'];
         const arabContainer = document.getElementById('arabicGrid');
         arabicData.forEach(char => {
-            arabContainer.innerHTML += `<div onclick="speakText('${char}', 'ar-SA')" class="bg-amber-50 hover:bg-amber-100 border-2 border-amber-300 p-5 rounded-xl text-center text-3xl font-bold arabic-text cursor-pointer text-amber-800 shadow-sm">${char}</div>`;
+            arabContainer.innerHTML += `<div onclick="speakInteractive('${char}', 'হরফ', 'ar-SA')" class="bg-amber-50 hover:bg-amber-100 border-2 border-amber-300 p-5 rounded-xl text-center text-3xl font-bold arabic-text cursor-pointer text-amber-800 shadow-sm">${char}</div>`;
         });
 
         // Numbers
         const numContainer = document.getElementById('numbersGrid');
         for(let i=1; i<=10; i++) {
-            numContainer.innerHTML += `<div onclick="speakText('সংখ্যা ${i}! বলো তো সোনামণি, ${i}', 'bn-BD')" class="bg-purple-50 hover:bg-purple-100 border-2 border-purple-300 p-6 rounded-2xl text-center text-3xl font-bold text-purple-700 cursor-pointer shadow">${i}</div>`;
+            numContainer.innerHTML += `<div onclick="speakInteractive('সংখ্যা ${i}', 'সংখ্যা ${i}', 'bn-BD')" class="bg-purple-50 hover:bg-purple-100 border-2 border-purple-300 p-6 rounded-2xl text-center text-3xl font-bold text-purple-700 cursor-pointer shadow">${i}</div>`;
         }
 
         // Math Game Logic
@@ -719,17 +711,16 @@
             options.forEach(opt => {
                 optContainer.innerHTML += `<button onclick="checkMath(${opt}, ${ans})" class="bg-emerald-100 hover:bg-emerald-200 text-emerald-900 font-bold p-4 rounded-xl text-2xl shadow">${opt}</button>`;
             });
-            speakText(`${num1} আর ${num2} যোগ করলে কত হয় সোনামণি?`, 'bn-BD');
         }
         function checkMath(selected, correct) {
             const fb = document.getElementById('mathFeedback');
             if(selected === correct) {
                 fb.innerHTML = '<span class="text-green-600"><i class="fa-solid fa-circle-check mr-1"></i>বাহ! কি সুন্দর সঠিক উত্তর হয়েছে (+৫ পয়েন্ট)</span>';
-                speakText('ওয়াও! কি মিষ্টি সোনামণি, সঠিক উত্তর হয়েছে!', 'bn-BD');
+                speakInteractive('সাবাশ সোনামণি', 'উত্তর সঠিক হয়েছে!', 'bn-BD');
                 addPoints(5);
             } else {
                 fb.innerHTML = '<span class="text-red-500"><i class="fa-solid fa-circle-xmark mr-1"></i>একটু ভুল হয়েছে! আবার চেষ্টা করো।</span>';
-                speakText('উফ, একটু ভুল হয়ে গেল! আবার চেষ্টা করো সোনামণি।', 'bn-BD');
+                speakInteractive('উফ', 'আবার চেষ্টা করো সোনামণি', 'bn-BD');
             }
         }
         loadMathProblem();
@@ -748,7 +739,7 @@
                     <h4 class="font-bold text-teal-800 text-lg mb-2">${d.t}</h4>
                     <p class="arabic-text text-2xl text-right mb-3 text-gray-800">${d.a}</p>
                     <p class="text-sm text-gray-600 mb-4">${d.b}</p>
-                    <button onclick="speakText('${d.t}! ${d.b}', 'bn-BD')" class="bg-teal-100 hover:bg-teal-200 text-teal-800 px-3 py-1.5 rounded-lg text-sm font-bold flex items-center space-x-2">
+                    <button onclick="speakInteractive('${d.t}', '${d.b}', 'bn-BD')" class="bg-teal-100 hover:bg-teal-200 text-teal-800 px-3 py-1.5 rounded-lg text-sm font-bold flex items-center space-x-2">
                         <i class="fa-solid fa-volume-high"></i> <span>শুনো</span>
                     </button>
                 </div>`;
@@ -763,17 +754,16 @@
             opts.forEach(o => {
                 container.innerHTML += `<button onclick="checkGame('${o}')" class="bg-cyan-100 hover:bg-cyan-200 text-cyan-900 text-3xl font-bold p-6 rounded-2xl shadow">${o}</button>`;
             });
-            speakText('ক বর্ণটি কোথায় আছে খুঁজে বের করো তো সোনামণি!', 'bn-BD');
         }
         function checkGame(val) {
             const fb = document.getElementById('gameFeedback');
             if(val === 'ক') {
                 fb.innerHTML = '<span class="text-green-600 font-bold">অভিনন্দন! সঠিক উত্তর চিনেছ (+১০ পয়েন্ট)</span>';
-                speakText('সাবাশ! ক বর্ণটি সুন্দরভাবে চিনেছ!', 'bn-BD');
+                speakInteractive('ক', 'সঠিকভাবে চিনেছ!', 'bn-BD');
                 addPoints(10);
             } else {
                 fb.innerHTML = '<span class="text-red-500 font-bold">হয়নি! আবার চেষ্টা করো।</span>';
-                speakText('হয়নি তো! চলো আবার চেষ্টা করি।', 'bn-BD');
+                speakInteractive('ভুল হয়েছে', 'আবার চেষ্টা করো সোনামণি', 'bn-BD');
             }
         }
         loadGame();
@@ -789,11 +779,10 @@
             const res = document.getElementById('quizResult');
             if(selected === correct) {
                 res.innerHTML = '<span class="text-green-600">মাশাআল্লাহ! সঠিক উত্তর হয়েছে (+১০ পয়েন্ট)</span>';
-                speakText('মাশাআল্লাহ! কি সুন্দর উত্তর দিয়েছ!', 'bn-BD');
+                speakInteractive('মাশাআল্লাহ', 'সঠিক উত্তর হয়েছে!', 'bn-BD');
                 addPoints(10);
             } else {
                 res.innerHTML = '<span class="text-red-500">ভুল হয়েছে! সঠিক উত্তরটি হবে ৫টি।</span>';
-                speakText('সঠিক উত্তরটি হবে ৫টি।', 'bn-BD');
             }
         }
 
