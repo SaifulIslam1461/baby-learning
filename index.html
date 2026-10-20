@@ -33,7 +33,6 @@
     <style>
         body { font-family: 'Baloo Da 2', cursive, sans-serif; background-color: #F0FDF4; }
         .arabic-text { font-family: 'Amiri', serif; direction: rtl; }
-        /* Smooth transition */
         .page-section { display: none; }
         .page-section.active { display: block; animation: fadeIn 0.4s ease-in-out; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
@@ -101,123 +100,79 @@
             </h3>
             
             <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-                <!-- Card 1 -->
+                <!-- Cards -->
                 <div onclick="showSection('islamic')" class="bg-white p-5 rounded-2xl shadow-md hover:shadow-xl border-b-4 border-emerald-500 cursor-pointer transition transform hover:-translate-y-1 flex flex-col items-center text-center">
-                    <div class="w-14 h-14 bg-emerald-100 text-emerald-600 rounded-2xl flex items-center justify-center text-2xl mb-3 shadow-inner">
-                        <i class="fa-solid fa-mosque"></i>
-                    </div>
+                    <div class="w-14 h-14 bg-emerald-100 text-emerald-600 rounded-2xl flex items-center justify-center text-2xl mb-3 shadow-inner"><i class="fa-solid fa-mosque"></i></div>
                     <h4 class="font-bold text-gray-800 text-sm md:text-base">ইসলামিক শিক্ষা</h4>
                     <span class="text-xs text-gray-400 mt-1">ঈমান ও নৈতিকতা</span>
                 </div>
-                <!-- Card 2 -->
                 <div onclick="showSection('bengali')" class="bg-white p-5 rounded-2xl shadow-md hover:shadow-xl border-b-4 border-pink-500 cursor-pointer transition transform hover:-translate-y-1 flex flex-col items-center text-center">
-                    <div class="w-14 h-14 bg-pink-100 text-pink-600 rounded-2xl flex items-center justify-center text-2xl mb-3 shadow-inner">
-                        <i class="fa-solid fa-font"></i>
-                    </div>
+                    <div class="w-14 h-14 bg-pink-100 text-pink-600 rounded-2xl flex items-center justify-center text-2xl mb-3 shadow-inner"><i class="fa-solid fa-font"></i></div>
                     <h4 class="font-bold text-gray-800 text-sm md:text-base">বাংলা বর্ণমালা</h4>
                     <span class="text-xs text-gray-400 mt-1">স্বর ও ব্যঞ্জনবর্ণ</span>
                 </div>
-                <!-- Card 3 -->
                 <div onclick="showSection('english')" class="bg-white p-5 rounded-2xl shadow-md hover:shadow-xl border-b-4 border-blue-500 cursor-pointer transition transform hover:-translate-y-1 flex flex-col items-center text-center">
-                    <div class="w-14 h-14 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center text-2xl mb-3 shadow-inner">
-                        <i class="fa-solid fa-graduation-cap"></i>
-                    </div>
+                    <div class="w-14 h-14 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center text-2xl mb-3 shadow-inner"><i class="fa-solid fa-graduation-cap"></i></div>
                     <h4 class="font-bold text-gray-800 text-sm md:text-base">English Alphabet</h4>
                     <span class="text-xs text-gray-400 mt-1">A to Z Learning</span>
                 </div>
-                <!-- Card 4 -->
                 <div onclick="showSection('arabic')" class="bg-white p-5 rounded-2xl shadow-md hover:shadow-xl border-b-4 border-amber-500 cursor-pointer transition transform hover:-translate-y-1 flex flex-col items-center text-center">
-                    <div class="w-14 h-14 bg-amber-100 text-amber-600 rounded-2xl flex items-center justify-center text-2xl mb-3 shadow-inner">
-                        <i class="fa-solid fa-book-open"></i>
-                    </div>
+                    <div class="w-14 h-14 bg-amber-100 text-amber-600 rounded-2xl flex items-center justify-center text-2xl mb-3 shadow-inner"><i class="fa-solid fa-book-open"></i></div>
                     <h4 class="font-bold text-gray-800 text-sm md:text-base">আরবি হরফ শিক্ষা</h4>
                     <span class="text-xs text-gray-400 mt-1">আলিফ থেকে ইয়া</span>
                 </div>
-                <!-- Card 5 -->
                 <div onclick="showSection('numbers')" class="bg-white p-5 rounded-2xl shadow-md hover:shadow-xl border-b-4 border-purple-500 cursor-pointer transition transform hover:-translate-y-1 flex flex-col items-center text-center">
-                    <div class="w-14 h-14 bg-purple-100 text-purple-600 rounded-2xl flex items-center justify-center text-2xl mb-3 shadow-inner">
-                        <i class="fa-solid fa-list-ol"></i>
-                    </div>
+                    <div class="w-14 h-14 bg-purple-100 text-purple-600 rounded-2xl flex items-center justify-center text-2xl mb-3 shadow-inner"><i class="fa-solid fa-list-ol"></i></div>
                     <h4 class="font-bold text-gray-800 text-sm md:text-base">সংখ্যা শিক্ষা</h4>
                     <span class="text-xs text-gray-400 mt-1">বাংলা, ইংরেজি, আরবি</span>
                 </div>
-                <!-- Card 6 -->
                 <div onclick="showSection('math')" class="bg-white p-5 rounded-2xl shadow-md hover:shadow-xl border-b-4 border-red-500 cursor-pointer transition transform hover:-translate-y-1 flex flex-col items-center text-center">
-                    <div class="w-14 h-14 bg-red-100 text-red-600 rounded-2xl flex items-center justify-center text-2xl mb-3 shadow-inner">
-                        <i class="fa-solid fa-calculator"></i>
-                    </div>
+                    <div class="w-14 h-14 bg-red-100 text-red-600 rounded-2xl flex items-center justify-center text-2xl mb-3 shadow-inner"><i class="fa-solid fa-calculator"></i></div>
                     <h4 class="font-bold text-gray-800 text-sm md:text-base">সহজ গণিত</h4>
                     <span class="text-xs text-gray-400 mt-1">যোগ, বিয়োগ, গণনা</span>
                 </div>
-                <!-- Card 7 -->
                 <div onclick="showSection('dua')" class="bg-white p-5 rounded-2xl shadow-md hover:shadow-xl border-b-4 border-teal-500 cursor-pointer transition transform hover:-translate-y-1 flex flex-col items-center text-center">
-                    <div class="w-14 h-14 bg-teal-100 text-teal-600 rounded-2xl flex items-center justify-center text-2xl mb-3 shadow-inner">
-                        <i class="fa-solid fa-hands-praying"></i>
-                    </div>
+                    <div class="w-14 h-14 bg-teal-100 text-teal-600 rounded-2xl flex items-center justify-center text-2xl mb-3 shadow-inner"><i class="fa-solid fa-hands-praying"></i></div>
                     <h4 class="font-bold text-gray-800 text-sm md:text-base">দোয়া ও যিকির</h4>
                     <span class="text-xs text-gray-400 mt-1">দৈনিক প্রয়োজনীয় দোয়া</span>
                 </div>
-                <!-- Card 8 -->
                 <div onclick="showSection('namaz')" class="bg-white p-5 rounded-2xl shadow-md hover:shadow-xl border-b-4 border-indigo-500 cursor-pointer transition transform hover:-translate-y-1 flex flex-col items-center text-center">
-                    <div class="w-14 h-14 bg-indigo-100 text-indigo-600 rounded-2xl flex items-center justify-center text-2xl mb-3 shadow-inner">
-                        <i class="fa-solid fa-person-praying"></i>
-                    </div>
+                    <div class="w-14 h-14 bg-indigo-100 text-indigo-600 rounded-2xl flex items-center justify-center text-2xl mb-3 shadow-inner"><i class="fa-solid fa-person-praying"></i></div>
                     <h4 class="font-bold text-gray-800 text-sm md:text-base">নামাজ ও অজু</h4>
                     <span class="text-xs text-gray-400 mt-1">সহজ শিক্ষা</span>
                 </div>
-                <!-- Card 9 -->
                 <div onclick="showSection('stories')" class="bg-white p-5 rounded-2xl shadow-md hover:shadow-xl border-b-4 border-orange-500 cursor-pointer transition transform hover:-translate-y-1 flex flex-col items-center text-center">
-                    <div class="w-14 h-14 bg-orange-100 text-orange-600 rounded-2xl flex items-center justify-center text-2xl mb-3 shadow-inner">
-                        <i class="fa-solid fa-book-bookmark"></i>
-                    </div>
+                    <div class="w-14 h-14 bg-orange-100 text-orange-600 rounded-2xl flex items-center justify-center text-2xl mb-3 shadow-inner"><i class="fa-solid fa-book-bookmark"></i></div>
                     <h4 class="font-bold text-gray-800 text-sm md:text-base">নবীদের গল্প</h4>
                     <span class="text-xs text-gray-400 mt-1">শিক্ষণীয় ঘটনাবলী</span>
                 </div>
-                <!-- Card 10 -->
                 <div onclick="showSection('animals')" class="bg-white p-5 rounded-2xl shadow-md hover:shadow-xl border-b-4 border-lime-500 cursor-pointer transition transform hover:-translate-y-1 flex flex-col items-center text-center">
-                    <div class="w-14 h-14 bg-lime-100 text-lime-700 rounded-2xl flex items-center justify-center text-2xl mb-3 shadow-inner">
-                        <i class="fa-solid fa-paw"></i>
-                    </div>
+                    <div class="w-14 h-14 bg-lime-100 text-lime-700 rounded-2xl flex items-center justify-center text-2xl mb-3 shadow-inner"><i class="fa-solid fa-paw"></i></div>
                     <h4 class="font-bold text-gray-800 text-sm md:text-base">পশুপাখি ও প্রকৃতি</h4>
                     <span class="text-xs text-gray-400 mt-1">পরিবেশ পরিচিতি</span>
                 </div>
-                <!-- Card 11 -->
                 <div onclick="showSection('colors')" class="bg-white p-5 rounded-2xl shadow-md hover:shadow-xl border-b-4 border-yellow-500 cursor-pointer transition transform hover:-translate-y-1 flex flex-col items-center text-center">
-                    <div class="w-14 h-14 bg-yellow-100 text-yellow-700 rounded-2xl flex items-center justify-center text-2xl mb-3 shadow-inner">
-                        <i class="fa-solid fa-palette"></i>
-                    </div>
+                    <div class="w-14 h-14 bg-yellow-100 text-yellow-700 rounded-2xl flex items-center justify-center text-2xl mb-3 shadow-inner"><i class="fa-solid fa-palette"></i></div>
                     <h4 class="font-bold text-gray-800 text-sm md:text-base">রং ও আকৃতি</h4>
                     <span class="text-xs text-gray-400 mt-1">শেপস ও কালার</span>
                 </div>
-                <!-- Card 12 -->
                 <div onclick="showSection('games')" class="bg-white p-5 rounded-2xl shadow-md hover:shadow-xl border-b-4 border-cyan-500 cursor-pointer transition transform hover:-translate-y-1 flex flex-col items-center text-center">
-                    <div class="w-14 h-14 bg-cyan-100 text-cyan-600 rounded-2xl flex items-center justify-center text-2xl mb-3 shadow-inner">
-                        <i class="fa-solid fa-gamepad"></i>
-                    </div>
+                    <div class="w-14 h-14 bg-cyan-100 text-cyan-600 rounded-2xl flex items-center justify-center text-2xl mb-3 shadow-inner"><i class="fa-solid fa-gamepad"></i></div>
                     <h4 class="font-bold text-gray-800 text-sm md:text-base">শিক্ষামূলক গেম</h4>
                     <span class="text-xs text-gray-400 mt-1">মজার খেলা</span>
                 </div>
-                <!-- Card 13 -->
                 <div onclick="showSection('quiz')" class="bg-white p-5 rounded-2xl shadow-md hover:shadow-xl border-b-4 border-rose-500 cursor-pointer transition transform hover:-translate-y-1 flex flex-col items-center text-center">
-                    <div class="w-14 h-14 bg-rose-100 text-rose-600 rounded-2xl flex items-center justify-center text-2xl mb-3 shadow-inner">
-                        <i class="fa-solid fa-circle-question"></i>
-                    </div>
+                    <div class="w-14 h-14 bg-rose-100 text-rose-600 rounded-2xl flex items-center justify-center text-2xl mb-3 shadow-inner"><i class="fa-solid fa-circle-question"></i></div>
                     <h4 class="font-bold text-gray-800 text-sm md:text-base">কুইজ প্রতিযোগিতা</h4>
                     <span class="text-xs text-gray-400 mt-1">মেধা যাচাই</span>
                 </div>
-                <!-- Card 14 -->
                 <div onclick="showSection('drawing')" class="bg-white p-5 rounded-2xl shadow-md hover:shadow-xl border-b-4 border-fuchsia-500 cursor-pointer transition transform hover:-translate-y-1 flex flex-col items-center text-center">
-                    <div class="w-14 h-14 bg-fuchsia-100 text-fuchsia-600 rounded-2xl flex items-center justify-center text-2xl mb-3 shadow-inner">
-                        <i class="fa-solid fa-pen-nib"></i>
-                    </div>
+                    <div class="w-14 h-14 bg-fuchsia-100 text-fuchsia-600 rounded-2xl flex items-center justify-center text-2xl mb-3 shadow-inner"><i class="fa-solid fa-pen-nib"></i></div>
                     <h4 class="font-bold text-gray-800 text-sm md:text-base">লেখার অনুশীলন</h4>
                     <span class="text-xs text-gray-400 mt-1">ক্যানভাস প্র্যাকটিস</span>
                 </div>
-                <!-- Card 15 -->
                 <div onclick="showSection('parent')" class="bg-white p-5 rounded-2xl shadow-md hover:shadow-xl border-b-4 border-slate-500 cursor-pointer transition transform hover:-translate-y-1 flex flex-col items-center text-center">
-                    <div class="w-14 h-14 bg-slate-100 text-slate-700 rounded-2xl flex items-center justify-center text-2xl mb-3 shadow-inner">
-                        <i class="fa-solid fa-user-shield"></i>
-                    </div>
+                    <div class="w-14 h-14 bg-slate-100 text-slate-700 rounded-2xl flex items-center justify-center text-2xl mb-3 shadow-inner"><i class="fa-solid fa-user-shield"></i></div>
                     <h4 class="font-bold text-gray-800 text-sm md:text-base">অভিভাবক বিভাগ</h4>
                     <span class="text-xs text-gray-400 mt-1">অগ্রগতি ও সেটিংস</span>
                 </div>
@@ -237,28 +192,28 @@
                 <div class="bg-white p-6 rounded-2xl shadow-md border-l-8 border-emerald-500">
                     <h3 class="text-xl font-bold text-emerald-800 mb-3"><i class="fa-solid fa-star-and-crescent mr-2"></i>আল্লাহ তাআলা এক ও অদ্বিতীয়</h3>
                     <p class="text-gray-600 leading-relaxed">আল্লাহ আমাদের সৃষ্টি করেছেন। তিনি আমাদের রিজিক দেন, ভালোবাসেন এবং সবকিছু দেখেন। আমরা শুধু তারই ইবাদত করব।</p>
-                    <button onclick="speakText('আল্লাহ আমাদের সৃষ্টি করেছেন। তিনি আমাদের রিজিক দেন।')" class="mt-4 bg-emerald-100 text-emerald-700 px-3 py-1.5 rounded-lg text-sm font-bold flex items-center space-x-2 hover:bg-emerald-200">
+                    <button onclick="speakText('সোনামণি শোনো, আল্লাহ আমাদের সৃষ্টি করেছেন। তিনি আমাদের অনেক ভালোবাসেন এবং রিজিক দেন।', 'bn-BD')" class="mt-4 bg-emerald-100 text-emerald-700 px-3 py-1.5 rounded-lg text-sm font-bold flex items-center space-x-2 hover:bg-emerald-200">
                         <i class="fa-solid fa-volume-high"></i> <span>শুনো</span>
                     </button>
                 </div>
                 <div class="bg-white p-6 rounded-2xl shadow-md border-l-8 border-amber-500">
                     <h3 class="text-xl font-bold text-amber-800 mb-3"><i class="fa-solid fa-heart mr-2"></i>আমাদের প্রিয় নবী মুহাম্মদ ﷺ</h3>
                     <p class="text-gray-600 leading-relaxed">আমাদের শেষ নবী হযরত মুহাম্মদ ﷺ। তিনি আমাদের সুন্দর চরিত্র ও ইসলামের সঠিক পথ শিখিয়েছেন। তার ওপর আমাদের অনেক দরুদ পাঠ করা উচিত।</p>
-                    <button onclick="speakText('আমাদের শেষ নবী হযরত মুহাম্মদ সাঃ।')" class="mt-4 bg-amber-100 text-amber-800 px-3 py-1.5 rounded-lg text-sm font-bold flex items-center space-x-2 hover:bg-amber-200">
+                    <button onclick="speakText('আমাদের শেষ নবী হযরত মুহাম্মদ সাল্লাল্লাহু আলাইহি ওয়া সাল্লাম। চলো উনার ওপর দরূদ পড়ি।', 'bn-BD')" class="mt-4 bg-amber-100 text-amber-800 px-3 py-1.5 rounded-lg text-sm font-bold flex items-center space-x-2 hover:bg-amber-200">
                         <i class="fa-solid fa-volume-high"></i> <span>শুনো</span>
                     </button>
                 </div>
                 <div class="bg-white p-6 rounded-2xl shadow-md border-l-8 border-teal-500">
                     <h3 class="text-xl font-bold text-teal-800 mb-3"><i class="fa-solid fa-hands-holding-child mr-2"></i>বাবা-মায়ের প্রতি সদাচরণ</h3>
                     <p class="text-gray-600 leading-relaxed">পিতা-মাতা আমাদের অনেক যত্ন নেন। তাদের সাথে সবসময় আদবের সাথে কথা বলতে হবে এবং তাদের সেবা করতে হবে।</p>
-                    <button onclick="speakText('পিতা-মাতার সাথে সবসময় ভালো ব্যবহার করবে।')" class="mt-4 bg-teal-100 text-teal-800 px-3 py-1.5 rounded-lg text-sm font-bold flex items-center space-x-2 hover:bg-teal-200">
+                    <button onclick="speakText('পিতা-মাতার সাথে সবসময় মিষ্টি করে ভালো ব্যবহার করতে হয়, ঠিক আছে?', 'bn-BD')" class="mt-4 bg-teal-100 text-teal-800 px-3 py-1.5 rounded-lg text-sm font-bold flex items-center space-x-2 hover:bg-teal-200">
                         <i class="fa-solid fa-volume-high"></i> <span>শুনো</span>
                     </button>
                 </div>
                 <div class="bg-white p-6 rounded-2xl shadow-md border-l-8 border-blue-500">
                     <h3 class="text-xl font-bold text-blue-800 mb-3"><i class="fa-solid fa-shield-halved mr-2"></i>সত্য কথা বলা ও মিথ্যা বর্জন</h3>
                     <p class="text-gray-600 leading-relaxed">মিথ্যা বলা মহাপাপ। আল্লাহ সত্যবাদীদের ভালোবাসেন। আমরা সবসময় সত্য কথা বলব এবং মিথ্যা থেকে দূরে থাকব।</p>
-                    <button onclick="speakText('আমরা সবসময় সত্য কথা বলব।')" class="mt-4 bg-blue-100 text-blue-800 px-3 py-1.5 rounded-lg text-sm font-bold flex items-center space-x-2 hover:bg-blue-200">
+                    <button onclick="speakText('লক্ষ্মী সোনামণি, আমরা কিন্তু সবসময় সত্য কথা বলবো, কখনও মিথ্যা বলবো না।', 'bn-BD')" class="mt-4 bg-blue-100 text-blue-800 px-3 py-1.5 rounded-lg text-sm font-bold flex items-center space-x-2 hover:bg-blue-200">
                         <i class="fa-solid fa-volume-high"></i> <span>শুনো</span>
                     </button>
                 </div>
@@ -277,16 +232,12 @@
             
             <div class="bg-white p-6 rounded-2xl shadow-md mb-6">
                 <h3 class="text-lg font-bold text-pink-600 mb-3">স্বরবর্ণ (অ - ঔ)</h3>
-                <div id="sworobornoGrid" class="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-9 gap-3">
-                    <!-- Dynamic Sworoborno Generated via JS -->
-                </div>
+                <div id="sworobornoGrid" class="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-9 gap-3"></div>
             </div>
 
             <div class="bg-white p-6 rounded-2xl shadow-md">
                 <h3 class="text-lg font-bold text-emerald-600 mb-3">ব্যঞ্জনবর্ণ (ক - ঁ)</h3>
-                <div id="byanjonbornoGrid" class="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-9 gap-3">
-                    <!-- Dynamic Byanjonborno Generated via JS -->
-                </div>
+                <div id="byanjonbornoGrid" class="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-9 gap-3"></div>
             </div>
         </section>
 
@@ -299,9 +250,7 @@
                 </button>
                 <h2 class="text-2xl font-bold text-emerald-900">English Alphabet (A to Z)</h2>
             </div>
-            <div id="englishGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
-                <!-- Dynamic English generated by JS -->
-            </div>
+            <div id="englishGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4"></div>
         </section>
 
 
@@ -313,9 +262,7 @@
                 </button>
                 <h2 class="text-2xl font-bold text-emerald-900">আরবি হরফ শিক্ষা (أ - ي)</h2>
             </div>
-            <div id="arabicGrid" class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-4">
-                <!-- Dynamic Arabic generated by JS -->
-            </div>
+            <div id="arabicGrid" class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-4"></div>
         </section>
 
 
@@ -327,9 +274,7 @@
                 </button>
                 <h2 class="text-2xl font-bold text-emerald-900">সংখ্যা শিক্ষা (১ থেকে ১০)</h2>
             </div>
-            <div id="numbersGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
-                <!-- Dynamic Numbers generated by JS -->
-            </div>
+            <div id="numbersGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4"></div>
         </section>
 
 
@@ -342,12 +287,8 @@
                 <h2 class="text-2xl font-bold text-emerald-900">সহজ গণিত ও গণনা</h2>
             </div>
             <div class="bg-white p-8 rounded-3xl shadow-xl max-w-xl mx-auto text-center">
-                <div id="mathQuestionBox" class="text-3xl font-bold text-emerald-800 mb-6">
-                    ২ + ৩ কত হয়?
-                </div>
-                <div class="grid grid-cols-2 gap-4 mb-6" id="mathOptions">
-                    <!-- Options generated via JS -->
-                </div>
+                <div id="mathQuestionBox" class="text-3xl font-bold text-emerald-800 mb-6">২ + ৩ কত হয়?</div>
+                <div class="grid grid-cols-2 gap-4 mb-6" id="mathOptions"></div>
                 <div id="mathFeedback" class="text-lg font-bold"></div>
                 <button onclick="loadMathProblem()" class="mt-6 bg-emerald-600 text-white px-6 py-2 rounded-xl font-bold hover:bg-emerald-700 shadow">পরবর্তী প্রশ্ন</button>
             </div>
@@ -362,9 +303,7 @@
                 </button>
                 <h2 class="text-2xl font-bold text-emerald-900">প্রয়োজনীয় দোয়া ও যিকির</h2>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="duaContainer">
-                <!-- Dynamic Duas -->
-            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="duaContainer"></div>
         </section>
 
 
@@ -380,20 +319,20 @@
                 <div class="bg-white p-6 rounded-2xl shadow-md border-t-4 border-indigo-500">
                     <h3 class="text-xl font-bold text-indigo-900 mb-3"><i class="fa-solid fa-droplet mr-2"></i>অজুর ৪টি ফরজ</h3>
                     <ul class="list-disc list-inside space-y-2 text-gray-700">
-                    <li>মুখমণ্ডল একবার ধোয়া।</li>
-                    <li>কনুইসহ দুই হাত একবার ধোয়া।</li>
-                    <li>মাথার এক চতুর্থাংশ মাসাহ করা।</li>
-                    <li>গোড়লিসহ দুই পা একবার ধোয়া।</li>
+                        <li>মুখমণ্ডল একবার ধোয়া।</li>
+                        <li>কনুইসহ দুই হাত একবার ধোয়া।</li>
+                        <li>মাথার এক চতুর্থাংশ মাসাহ করা।</li>
+                        <li>গোড়লিসহ দুই পা একবার ধোয়া।</li>
                     </ul>
                 </div>
                 <div class="bg-white p-6 rounded-2xl shadow-md border-t-4 border-emerald-500">
                     <h3 class="text-xl font-bold text-emerald-900 mb-3"><i class="fa-solid fa-person-praying mr-2"></i>দৈনিক ৫ ওয়াক্ত নামাজ</h3>
                     <ul class="list-disc list-inside space-y-2 text-gray-700">
-                    <li>ফজজর — ২ রাকাত</li>
-                    <li>যোহর — ৪ রাকাত</li>
-                    <li>আসর — ৪ রাকাত</li>
-                    <li>মাগরিব — ৩ রাকাত</li>
-                    <li>এশা — ৪ রাকাত</li>
+                        <li>ফজর — ২ রাকাত</li>
+                        <li>যোহর — ৪ রাকাত</li>
+                        <li>আসর — ৪ রাকাত</li>
+                        <li>মাগরিব — ৩ রাকাত</li>
+                        <li>এশা — ৪ রাকাত</li>
                     </ul>
                 </div>
             </div>
@@ -415,7 +354,7 @@
                 </div>
                 <div class="bg-white p-6 rounded-2xl shadow-md">
                     <h3 class="text-xl font-bold text-orange-600 mb-2">হযরত নূহ (আ.)</h3>
-                    <p class="the-gray-600 text-gray-600">তিনি আল্লাহর নির্দেশে একটি বিশাল কিশতি (নৌকা) তৈরি করেছিলেন, যা মহাপ্লাবনের সময় মুমিনদের রক্ষা করেছিল।</p>
+                    <p class="text-gray-600">তিনি আল্লাহর নির্দেশে একটি বিশাল কিশতি (নৌকা) তৈরি করেছিলেন, যা মহাপ্লাবনের সময় মুমিনদের রক্ষা করেছিল।</p>
                 </div>
             </div>
         </section>
@@ -430,22 +369,22 @@
                 <h2 class="text-2xl font-bold text-emerald-900">পশুপাখি ও প্রকৃতি</h2>
             </div>
             <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
-                <div class="bg-white p-5 rounded-2xl shadow text-center">
+                <div onclick="speakText('গরু! এটি আমাদের মিষ্টি দুধ দেয়। হাম্বা হাম্বা!', 'bn-BD')" class="bg-white p-5 rounded-2xl shadow text-center cursor-pointer hover:shadow-lg">
                     <div class="text-4xl mb-2">🐄</div>
                     <h4 class="font-bold">গরু (Cow)</h4>
                     <p class="text-xs text-gray-500">দুধ দেয়</p>
                 </div>
-                <div class="bg-white p-5 rounded-2xl shadow text-center">
+                <div onclick="speakText('ছাগল! এটি ঘাস খায়। ব্যা ব্যা করে ডাকে!', 'bn-BD')" class="bg-white p-5 rounded-2xl shadow text-center cursor-pointer hover:shadow-lg">
                     <div class="text-4xl mb-2">🐐</div>
                     <h4 class="font-bold">ছাগল (Goat)</h4>
                     <p class="text-xs text-gray-500">ঘাস খায়</p>
                 </div>
-                <div class="bg-white p-5 rounded-2xl shadow text-center">
+                <div onclick="speakText('বিড়াল! কি মিষ্টি নরম বিড়াল, মিউ মিউ করে!', 'bn-BD')" class="bg-white p-5 rounded-2xl shadow text-center cursor-pointer hover:shadow-lg">
                     <div class="text-4xl mb-2">🐈</div>
                     <h4 class="font-bold">বিড়াল (Cat)</h4>
                     <p class="text-xs text-gray-500">মিউ মিউ করে</p>
                 </div>
-                <div class="bg-white p-5 rounded-2xl shadow text-center">
+                <div onclick="speakText('মোরগ! সকালে সুন্দর করে ডেকে আমাদের ঘুম ভাঙায়!', 'bn-BD')" class="bg-white p-5 rounded-2xl shadow text-center cursor-pointer hover:shadow-lg">
                     <div class="text-4xl mb-2">🐓</div>
                     <h4 class="font-bold">মোরগ (Rooster)</h4>
                     <p class="text-xs text-gray-500">সকালে ডাকে</p>
@@ -463,10 +402,10 @@
                 <h2 class="text-2xl font-bold text-emerald-900">রং ও আকৃতি পরিচিতি</h2>
             </div>
             <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
-                <div class="bg-red-500 text-white p-6 rounded-2xl shadow text-center font-bold text-lg">লাল (Red)</div>
-                <div class="bg-blue-500 text-white p-6 rounded-2xl shadow text-center font-bold text-lg">নীল (Blue)</div>
-                <div class="bg-green-500 text-white p-6 rounded-2xl shadow text-center font-bold text-lg">সবুজ (Green)</div>
-                <div class="bg-yellow-400 text-gray-900 p-6 rounded-2xl shadow text-center font-bold text-lg">হলুদ (Yellow)</div>
+                <div onclick="speakText('লাল রং! Red color!', 'bn-BD')" class="bg-red-500 text-white p-6 rounded-2xl shadow text-center font-bold text-lg cursor-pointer">লাল (Red)</div>
+                <div onclick="speakText('নীল রং! Blue color!', 'bn-BD')" class="bg-blue-500 text-white p-6 rounded-2xl shadow text-center font-bold text-lg cursor-pointer">নীল (Blue)</div>
+                <div onclick="speakText('সবুজ রং! Green color!', 'bn-BD')" class="bg-green-500 text-white p-6 rounded-2xl shadow text-center font-bold text-lg cursor-pointer">সবুজ (Green)</div>
+                <div onclick="speakText('হলুদ রং! Yellow color!', 'bn-BD')" class="bg-yellow-400 text-gray-900 p-6 rounded-2xl shadow text-center font-bold text-lg cursor-pointer">হলুদ (Yellow)</div>
             </div>
         </section>
 
@@ -482,9 +421,7 @@
             <div class="bg-white p-8 rounded-3xl shadow-xl max-w-xl mx-auto text-center">
                 <h3 class="text-xl font-bold text-cyan-800 mb-2">মজার বর্ণ মেলাও গেম</h3>
                 <p id="gameQuestion" class="text-2xl font-bold text-gray-700 my-6">"ক" বর্ণটি কোথায় আছে খুঁজে বের করো!</p>
-                <div class="grid grid-cols-3 gap-4 mb-6" id="gameOptions">
-                    <!-- Options -->
-                </div>
+                <div class="grid grid-cols-3 gap-4 mb-6" id="gameOptions"></div>
                 <div id="gameFeedback" class="text-lg font-bold"></div>
                 <button onclick="loadGame()" class="mt-4 bg-cyan-600 text-white px-6 py-2 rounded-xl font-bold hover:bg-cyan-700 shadow">পরবর্তী খেলা</button>
             </div>
@@ -502,9 +439,7 @@
             <div class="bg-white p-8 rounded-3xl shadow-xl max-w-xl mx-auto text-center">
                 <div id="quizContainer">
                     <h3 id="quizQuestion" class="text-xl font-bold text-gray-800 mb-6">আমাদের ধর্মের নাম কী?</h3>
-                    <div id="quizOptions" class="space-y-3 mb-6">
-                        <!-- Quiz options -->
-                    </div>
+                    <div id="quizOptions" class="space-y-3 mb-6"></div>
                 </div>
                 <div id="quizResult" class="text-xl font-bold text-emerald-700"></div>
             </div>
@@ -523,7 +458,7 @@
                 <p class="text-sm text-gray-500 mb-3">নিচের ফাঁকা জায়গায় আঙুল বা মাউস দিয়ে লিখে প্র্যাকটিস করো!</p>
                 <canvas id="drawCanvas" class="border-4 border-dashed border-emerald-300 rounded-2xl w-full h-64 bg-emerald-50 cursor-crosshair touch-none"></canvas>
                 <div class="flex justify-center space-x-4 mt-4">
-                    <button onclick="clearCanvas()" class="bg-red-500 hover:bg-red-600 text-white px-5 py-2 rounded-xl font-bold shadow"><i class="fa-solid fa-eraser mr-2"></i>মুছে ফেলੋ</button>
+                    <button onclick="clearCanvas()" class="bg-red-500 hover:bg-red-600 text-white px-5 py-2 rounded-xl font-bold shadow"><i class="fa-solid fa-eraser mr-2"></i>মুছে ফেলো</button>
                 </div>
             </div>
         </section>
@@ -618,16 +553,48 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // Text to Speech Helper
-        function speakText(text) {
+        // ==========================================
+        //  ADVANCED KIDS-FRIENDLY SPEECH SYNTHESIS
+        // ==========================================
+        function speakText(text, langCode = 'bn-BD') {
             if ('speechSynthesis' in window) {
-                window.speechSynthesis.cancel();
+                window.speechSynthesis.cancel(); // পূর্ববর্তী কথা বন্ধ করা
+
                 const utterance = new SpeechSynthesisUtterance(text);
-                utterance.lang = 'bn-BD';
-                utterance.rate = 0.9;
+                
+                // শিশুদের সহজের জন্য ধীর গতি
+                utterance.rate = 0.75; 
+                // মিষ্টি ও আদুরে কণ্ঠের জন্য উঁচু পিচ
+                utterance.pitch = 1.35; 
+
+                const voices = window.speechSynthesis.getVoices();
+                let selectedVoice = null;
+
+                if (langCode.startsWith('bn')) {
+                    utterance.lang = 'bn-BD';
+                    selectedVoice = voices.find(v => v.lang.includes('bn') && (v.name.includes('Female') || v.name.includes('Google') || v.name.includes('Natural')));
+                } else if (langCode.startsWith('en')) {
+                    utterance.lang = 'en-US';
+                    selectedVoice = voices.find(v => v.lang.includes('en') && (v.name.includes('Female') || v.name.includes('Google') || v.name.includes('Zira')));
+                } else if (langCode.startsWith('ar')) {
+                    utterance.lang = 'ar-SA';
+                    selectedVoice = voices.find(v => v.lang.includes('ar'));
+                }
+
+                if (selectedVoice) {
+                    utterance.voice = selectedVoice;
+                }
+
                 window.speechSynthesis.speak(utterance);
                 addPoints(1);
             }
+        }
+
+        // ব্রাউজারে ভয়েস প্রি-লোড রাখা
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.onvoiceschanged = () => {
+                window.speechSynthesis.getVoices();
+            };
         }
 
         // Dark/Light Theme Toggle
@@ -647,48 +614,95 @@
             }
         }
 
-        // Populate Bengali Alphabet
-        const sworoborno = ['অ', 'আ', 'ই', 'ঈ', 'উ', 'ঊ', 'ঋ', 'এ', 'ঐ', 'ও', 'ঔ'];
-        const byanjonborno = ['ক', 'খ', 'গ', 'ঘ', 'ঙ', 'চ', 'ছ', 'জ', 'ঝ', 'ঞ', 'ট', 'ঠ', 'ড', 'ঢ', 'ণ', 'ত', 'থ', 'দ', 'ধ', 'ন', 'প', 'ফ', 'ব', 'ভ', 'ম', 'য', 'র', 'ল', 'শ', 'ষ', 'স', 'হ', 'ড়', 'ঢ়', 'য়', 'ৎ', 'ং', 'ঃ', 'ঁ'];
+        // Interactive Rhymes for Bengali Sworoborno
+        const sworoMap = [
+            { c: 'অ', t: 'অ তে অজগর আসছে তেড়ে! বলো তো সোনামণি, অ' },
+            { c: 'আ', t: 'আ তে আমটি খাবো পেরে! বলো, আ' },
+            { c: 'ই', t: 'ই তে ইঁদুর ছানা ভয়ে মরে! বলো, ই' },
+            { c: 'ঈ', t: 'ঈ তে ঈগল পাখি আকাশে ওড়ে! বলো, ঈ' },
+            { c: 'উ', t: 'উ তে উট চলেছে মুখ তুলে! বলো, উ' },
+            { c: 'ঊ', t: 'ঊ তে ঊষা হাসে পুব আকাশে! বলো, ঊ' },
+            { c: 'ঋ', t: 'ঋ তে ঋষি মশাই বসেন পূজায়! বলো, ঋ' },
+            { c: 'এ', t: 'এ তে একাগাড়ী খুব ছুটেছে! বলো, এ' },
+            { c: 'ঐ', t: 'ঐ তে ঐরাবত চলেছে ঢুলে! বলো, ঐ' },
+            { c: 'ও', t: 'ও তে ওল খেও না ধরবে গলা! বলো, ও' },
+            { c: 'ঔ', t: 'ঔ তে ঔষধ খেতে মিছে বলা! বলো, ঔ' }
+        ];
 
         const sworoContainer = document.getElementById('sworobornoGrid');
-        sworoborno.forEach(char => {
-            sworoContainer.innerHTML += `<div onclick="speakText('${char}')" class="bg-pink-50 hover:bg-pink-100 border-2 border-pink-300 p-4 rounded-xl text-center text-2xl font-bold cursor-pointer transition transform hover:scale-105 text-pink-700 shadow-sm">${char}</div>`;
+        sworoMap.forEach(item => {
+            sworoContainer.innerHTML += `<div onclick="speakText('${item.t}', 'bn-BD')" class="bg-pink-50 hover:bg-pink-100 border-2 border-pink-300 p-4 rounded-xl text-center text-2xl font-bold cursor-pointer transition transform hover:scale-105 text-pink-700 shadow-sm">${item.c}</div>`;
         });
+
+        // Interactive Rhymes for Byanjonborno
+        const byanjonData = [
+            { c: 'ক', t: 'ক তে কলা! মিষ্টি কলা খেতে ভালো। বলো, ক' },
+            { c: 'খ', t: 'খ তে খরগোশ! খরগোশ ছানা লাফিয়ে চলে। বলো, খ' },
+            { c: 'গ', t: 'গ তে গরু! গরু আমাদের দুধ দেয়। বলো, গ' },
+            { c: 'ঘ', t: 'ঘ তে ঘোড়া! ঘোড়া ছোটে টগবগিয়ে। বলো, ঘ' },
+            { c: 'ঙ', t: 'ঙ তে ব্যাঙ! ব্যাঙ ডাকে ঘেঙর ঘেঙ। বলো, ঙ' },
+            { c: 'চ', t: 'চ তে চাঁদ! চাঁদ উঠেছে আকাশে। বলো, চ' },
+            { c: 'ছ', t: 'ছ তে ছাতা! বৃষ্টি এলে ছাতা লাগে। বলো, ছ' },
+            { c: 'জ', t: 'জ তে জাহাজ! জাহাজ চলে সাগরে। বলো, জ' },
+            { c: 'ঝ', t: 'ঝ তে ঝরনা! ঝরনা বয় ঝিরঝিরিয়ে। বলো, ঝ' },
+            { c: 'ঞ', t: 'ঞ তে মিঞা! মিঞা ভাই দাঁড়ায় সুখে। বলো, ঞ' },
+            { c: 'ট', t: 'ট তে টাকা! বলো, ট' }, { c: 'ঠ', t: 'ঠ তে ঠোঁট! বলো, ঠ' },
+            { c: 'ড', t: 'ড তে ডাব! ডাবের পানি মিষ্টি ভারি। বলো, ড' }, { c: 'ঢ', t: 'ঢ তে ঢোল! বলো, ঢ' },
+            { c: 'ণ', t: 'ণ তে হরিণ! হরিণ থাকে বনে। বলো, ণ' }, { c: 'ত', t: 'ত তে তরমুজ! তরমুজ খেতে ভারি মজা। বলো, ত' },
+            { c: 'থ', t: 'থ তে থালা! বলো, থ' }, { c: 'দ', d: 'দ তে দই! বলো, দ' },
+            { c: 'ধ', t: 'ধ তে ধান! বলো, ধ' }, { c: 'ন', t: 'ন তে নদী! বলো, ন' },
+            { c: 'প', t: 'প তে পাখি! পাখি ওড়ে ডানা মেলে। বলো, প' }, { c: 'ফ', t: 'ফ তে ফুল! ফুল ফোটে বাগানে। বলো, ফ' },
+            { c: 'ব', t: 'ব তে বই! আমরা নতুন বই পড়ি। বলো, ব' }, { c: 'ভ', t: 'ভ তে ভালুক! বলো, ভ' },
+            { c: 'ম', t: 'ম তে মাছ! মাছ থাকে পানিতে। বলো, ম' }, { c: 'য', t: 'য তে যাঁতা! বলো, য' },
+            { c: 'র', t: 'র তে রথ! বলো, র' }, { c: 'ল', t: 'ল তে লিচু! লাল লাল মিষ্টি লিচু। বলো, ল' },
+            { c: 'শ', t: 'শ তে শাপলা! শাপলা আমাদের জাতীয় ফুল। বলো, শ' }, { c: 'ষ', t: 'ষ তে ষাঁড়! বলো, ষ' },
+            { c: 'স', t: 'স তে সিংহ! সিংহ বনের রাজা। বলো, স' }, { c: 'হ', t: 'হ তে হাতি! হাতি চলে হেলেদুলে। বলো, হ' },
+            { c: 'ড়', t: 'ড়! বলো, ড়' }, { c: 'ঢ়', t: 'ঢ়! বলো, ঢ়' }, { c: 'য়', t: 'য়! বলো, য়' },
+            { c: 'ৎ', t: 'ৎ! বলো, ৎ' }, { c: 'ং', t: 'অনুস্বার!' }, { c: 'ঃ', t: 'বিসর্গ!' }, { c: 'ঁ', t: 'চন্দ্রবিন্দু!' }
+        ];
 
         const byanContainer = document.getElementById('byanjonbornoGrid');
-        byanjonborno.forEach(char => {
-            byanContainer.innerHTML += `<div onclick="speakText('${char}')" class="bg-emerald-50 hover:bg-emerald-100 border-2 border-emerald-300 p-4 rounded-xl text-center text-2xl font-bold cursor-pointer transition transform hover:scale-105 text-emerald-700 shadow-sm">${char}</div>`;
+        byanjonData.forEach(item => {
+            const textToSpeak = item.t || (item.c + '। বলো, ' + item.c);
+            byanContainer.innerHTML += `<div onclick="speakText('${textToSpeak}', 'bn-BD')" class="bg-emerald-50 hover:bg-emerald-100 border-2 border-emerald-300 p-4 rounded-xl text-center text-2xl font-bold cursor-pointer transition transform hover:scale-105 text-emerald-700 shadow-sm">${item.c}</div>`;
         });
 
-        // Populate English Alphabet
+        // Interactive English Alphabet
         const englishData = [
-            {l: 'A', s: 'Apple', b: 'আপেল'}, {l: 'B', s: 'Ball', b: 'বল'}, {l: 'C', s: 'Cat', b: 'বিড়াল'},
-            {l: 'D', s: 'Dog', b: 'কুকুর'}, {l: 'E', s: 'Elephant', b: 'হাতি'}, {l: 'F', s: 'Fish', b: 'মাছ'},
-            {l: 'G', s: 'Goat', b: 'ছাগল'}, {l: 'H', s: 'Hat', b: 'টুপি'}, {l: 'I', s: 'Ice cream', b: 'আইসক্রিম'},
-            {l: 'J', s: 'Jug', b: 'জগ'}, {l: 'K', s: 'Kite', b: 'ঘুড়ি'}, {l: 'L', s: 'Lion', b: 'সিংহ'}
+            {l: 'A', s: 'Apple', b: 'আপেল', t: 'A for Apple! Apple মানে আপেল। বলো, A' },
+            {l: 'B', s: 'Ball', b: 'বল', t: 'B for Ball! Ball মানে খেলার বল। বলো, B' },
+            {l: 'C', s: 'Cat', b: 'বিড়াল', t: 'C for Cat! Cat মানে মিষ্টি বিড়াল। বলো, C' },
+            {l: 'D', s: 'Dog', b: 'কুকুর', t: 'D for Dog! Dog মানে কুকুর। বলো, D' },
+            {l: 'E', s: 'Elephant', b: 'হাতি', t: 'E for Elephant! Elephant মানে বড় হাতি। বলো, E' },
+            {l: 'F', s: 'Fish', b: 'মাছ', t: 'F for Fish! Fish মানে মাছ। বলো, F' },
+            {l: 'G', s: 'Goat', b: 'ছাগল', t: 'G for Goat! Goat মানে ছাগল। বলো, G' },
+            {l: 'H', s: 'Hat', b: 'টুপি', t: 'H for Hat! Hat মানে সুন্দর টুপি। বলো, H' },
+            {l: 'I', s: 'Ice cream', b: 'আইসক্রিম', t: 'I for Ice cream! ইয়াম্মী আইসক্রিম। বলো, I' },
+            {l: 'J', s: 'Jug', b: 'জগ', t: 'J for Jug! Jug মানে পানি রাখার জগ। বলো, J' },
+            {l: 'K', s: 'Kite', b: 'ঘুড়ি', t: 'K for Kite! Kite মানে ঘুড়ি। বলো, K' },
+            {l: 'L', s: 'Lion', b: 'সিংহ', t: 'L for Lion! Lion মানে বনের রাজা সিংহ। বলো, L' }
         ];
         const engContainer = document.getElementById('englishGrid');
         englishData.forEach(item => {
             engContainer.innerHTML += `
-                <div onclick="speakText('${item.l} for ${item.s}')" class="bg-white border-2 border-blue-200 p-4 rounded-2xl text-center cursor-pointer transition transform hover:scale-105 shadow-md">
+                <div onclick="speakText('${item.t}', 'en-US')" class="bg-white border-2 border-blue-200 p-4 rounded-2xl text-center cursor-pointer transition transform hover:scale-105 shadow-md">
                     <div class="text-3xl font-extrabold text-blue-600 mb-1">${item.l}</div>
                     <div class="text-sm font-bold text-gray-700">${item.s}</div>
                     <div class="text-xs text-gray-500">${item.b}</div>
                 </div>`;
         });
 
-        // Populate Arabic Alphabet
+        // Arabic Alphabet
         const arabicData = ['أ', 'ب', 'ت', 'ث', 'ج', 'ح', 'خ', 'د', 'ذ', 'ر', 'ز', 'س', 'ش', 'ص', 'ض', 'ط', 'ظ', 'ع', 'غ', 'ف', 'ق', 'ك', 'ل', 'م', 'ن', 'هـ', 'و', 'ي'];
         const arabContainer = document.getElementById('arabicGrid');
         arabicData.forEach(char => {
-            arabContainer.innerHTML += `<div onclick="speakText('হরফ')" class="bg-amber-50 hover:bg-amber-100 border-2 border-amber-300 p-5 rounded-xl text-center text-3xl font-bold arabic-text cursor-pointer text-amber-800 shadow-sm">${char}</div>`;
+            arabContainer.innerHTML += `<div onclick="speakText('${char}', 'ar-SA')" class="bg-amber-50 hover:bg-amber-100 border-2 border-amber-300 p-5 rounded-xl text-center text-3xl font-bold arabic-text cursor-pointer text-amber-800 shadow-sm">${char}</div>`;
         });
 
-        // Populate Numbers
+        // Numbers
         const numContainer = document.getElementById('numbersGrid');
         for(let i=1; i<=10; i++) {
-            numContainer.innerHTML += `<div onclick="speakText('${i}')" class="bg-purple-50 hover:bg-purple-100 border-2 border-purple-300 p-6 rounded-2xl text-center text-3xl font-bold text-purple-700 cursor-pointer shadow">${i}</div>`;
+            numContainer.innerHTML += `<div onclick="speakText('সংখ্যা ${i}! বলো তো সোনামণি, ${i}', 'bn-BD')" class="bg-purple-50 hover:bg-purple-100 border-2 border-purple-300 p-6 rounded-2xl text-center text-3xl font-bold text-purple-700 cursor-pointer shadow">${i}</div>`;
         }
 
         // Math Game Logic
@@ -696,7 +710,7 @@
             const num1 = Math.floor(Math.random() * 5) + 1;
             const num2 = Math.floor(Math.random() * 5) + 1;
             const ans = num1 + num2;
-            document.getElementById('mathQuestionBox').innerText = `${num1} + ${num2} = কত?`;
+            document.getElementById('mathQuestionBox').innerText = `${num1} + ${num2} = কত হয়?`;
             document.getElementById('mathFeedback').innerText = '';
 
             let options = [ans, ans+1, Math.max(1, ans-1)].sort(() => Math.random() - 0.5);
@@ -705,14 +719,17 @@
             options.forEach(opt => {
                 optContainer.innerHTML += `<button onclick="checkMath(${opt}, ${ans})" class="bg-emerald-100 hover:bg-emerald-200 text-emerald-900 font-bold p-4 rounded-xl text-2xl shadow">${opt}</button>`;
             });
+            speakText(`${num1} আর ${num2} যোগ করলে কত হয় সোনামণি?`, 'bn-BD');
         }
         function checkMath(selected, correct) {
             const fb = document.getElementById('mathFeedback');
             if(selected === correct) {
-                fb.innerHTML = '<span class="text-green-600"><i class="fa-solid fa-circle-check mr-1"></i>বাহ! সঠিক উত্তর হয়েছে (+৫ পয়েন্ট)</span>';
+                fb.innerHTML = '<span class="text-green-600"><i class="fa-solid fa-circle-check mr-1"></i>বাহ! কি সুন্দর সঠিক উত্তর হয়েছে (+৫ পয়েন্ট)</span>';
+                speakText('ওয়াও! কি মিষ্টি সোনামণি, সঠিক উত্তর হয়েছে!', 'bn-BD');
                 addPoints(5);
             } else {
-                fb.innerHTML = '<span class="text-red-500"><i class="fa-solid fa-circle-xmark mr-1"></i>ভুল হয়েছে! আবার চেষ্টা করো।</span>';
+                fb.innerHTML = '<span class="text-red-500"><i class="fa-solid fa-circle-xmark mr-1"></i>একটু ভুল হয়েছে! আবার চেষ্টা করো।</span>';
+                speakText('উফ, একটু ভুল হয়ে গেল! আবার চেষ্টা করো সোনামণি।', 'bn-BD');
             }
         }
         loadMathProblem();
@@ -731,13 +748,13 @@
                     <h4 class="font-bold text-teal-800 text-lg mb-2">${d.t}</h4>
                     <p class="arabic-text text-2xl text-right mb-3 text-gray-800">${d.a}</p>
                     <p class="text-sm text-gray-600 mb-4">${d.b}</p>
-                    <button onclick="speakText('${d.t}')" class="bg-teal-100 hover:bg-teal-200 text-teal-800 px-3 py-1.5 rounded-lg text-sm font-bold flex items-center space-x-2">
+                    <button onclick="speakText('${d.t}! ${d.b}', 'bn-BD')" class="bg-teal-100 hover:bg-teal-200 text-teal-800 px-3 py-1.5 rounded-lg text-sm font-bold flex items-center space-x-2">
                         <i class="fa-solid fa-volume-high"></i> <span>শুনো</span>
                     </button>
                 </div>`;
         });
 
-        // Simple Mini Game Logic
+        // Mini Game Logic
         function loadGame() {
             document.getElementById('gameFeedback').innerText = '';
             const opts = ['ক', 'খ', 'গ'].sort(() => Math.random() - 0.5);
@@ -746,14 +763,17 @@
             opts.forEach(o => {
                 container.innerHTML += `<button onclick="checkGame('${o}')" class="bg-cyan-100 hover:bg-cyan-200 text-cyan-900 text-3xl font-bold p-6 rounded-2xl shadow">${o}</button>`;
             });
+            speakText('ক বর্ণটি কোথায় আছে খুঁজে বের করো তো সোনামণি!', 'bn-BD');
         }
         function checkGame(val) {
             const fb = document.getElementById('gameFeedback');
             if(val === 'ক') {
                 fb.innerHTML = '<span class="text-green-600 font-bold">অভিনন্দন! সঠিক উত্তর চিনেছ (+১০ পয়েন্ট)</span>';
+                speakText('সাবাশ! ক বর্ণটি সুন্দরভাবে চিনেছ!', 'bn-BD');
                 addPoints(10);
             } else {
                 fb.innerHTML = '<span class="text-red-500 font-bold">হয়নি! আবার চেষ্টা করো।</span>';
+                speakText('হয়নি তো! চলো আবার চেষ্টা করি।', 'bn-BD');
             }
         }
         loadGame();
@@ -769,9 +789,11 @@
             const res = document.getElementById('quizResult');
             if(selected === correct) {
                 res.innerHTML = '<span class="text-green-600">মাশাআল্লাহ! সঠিক উত্তর হয়েছে (+১০ পয়েন্ট)</span>';
+                speakText('মাশাআল্লাহ! কি সুন্দর উত্তর দিয়েছ!', 'bn-BD');
                 addPoints(10);
             } else {
                 res.innerHTML = '<span class="text-red-500">ভুল হয়েছে! সঠিক উত্তরটি হবে ৫টি।</span>';
+                speakText('সঠিক উত্তরটি হবে ৫টি।', 'bn-BD');
             }
         }
 
@@ -811,4 +833,3 @@
     </script>
 </body>
 </html>
-
