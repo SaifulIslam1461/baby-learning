@@ -201,13 +201,18 @@
             </div>
         </section>
 
-        <!-- 3. BENGALI ALPHABET SECTION (ISLAMIC BOX SYSTEM) -->
+        <!-- 3. BENGALI ALPHABET SECTION -->
         <section id="bengali" class="page-section">
-            <div class="flex items-center justify-between mb-6">
+            <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
                 <button onclick="showSection('home')" class="bg-white text-emerald-700 px-4 py-2 rounded-xl shadow font-bold flex items-center space-x-2 hover:bg-emerald-50">
                     <i class="fa-solid fa-arrow-left"></i> <span>হোমে ফিরে যাও</span>
                 </button>
-                <h2 class="text-2xl font-bold text-emerald-900">বাংলা বর্ণমালা (ইসলামিক ছবি সহ)</h2>
+                <div class="flex items-center space-x-3">
+                    <h2 class="text-2xl font-bold text-emerald-900">বাংলা বর্ণমালা</h2>
+                    <button onclick="openVideoModal('W2f65uG5kS0', 'বাংলা বর্ণমালা ছড়া গান')" class="bg-red-500 hover:bg-red-600 text-white px-3 py-1.5 rounded-xl font-bold text-xs flex items-center space-x-1 shadow transition transform hover:scale-105">
+                        <i class="fa-solid fa-circle-play text-base"></i> <span>ভিডিও দেখে শেখো</span>
+                    </button>
+                </div>
             </div>
             
             <div class="bg-white p-6 rounded-2xl shadow-md mb-6">
@@ -223,24 +228,34 @@
 
         <!-- 4. ENGLISH ALPHABET SECTION -->
         <section id="english" class="page-section">
-            <div class="flex items-center justify-between mb-6">
+            <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
                 <button onclick="showSection('home')" class="bg-white text-emerald-700 px-4 py-2 rounded-xl shadow font-bold flex items-center space-x-2 hover:bg-emerald-50">
                     <i class="fa-solid fa-arrow-left"></i> <span>হোমে ফিরে যাও</span>
                 </button>
-                <h2 class="text-2xl font-bold text-emerald-900">English Alphabet (Islamic Mind)</h2>
+                <div class="flex items-center space-x-3">
+                    <h2 class="text-2xl font-bold text-emerald-900">English Alphabet</h2>
+                    <button onclick="openVideoModal('ezmsrB685Qc', 'English Alphabet Song')" class="bg-red-500 hover:bg-red-600 text-white px-3 py-1.5 rounded-xl font-bold text-xs flex items-center space-x-1 shadow transition transform hover:scale-105">
+                        <i class="fa-solid fa-circle-play text-base"></i> <span>ভিডিও দেখে শেখো</span>
+                    </button>
+                </div>
             </div>
             <div id="englishGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4"></div>
         </section>
 
         <!-- 5. ARABIC ALPHABET SECTION -->
         <section id="arabic" class="page-section">
-            <div class="flex items-center justify-between mb-6">
+            <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
                 <button onclick="showSection('home')" class="bg-white text-emerald-700 px-4 py-2 rounded-xl shadow font-bold flex items-center space-x-2 hover:bg-emerald-50">
                     <i class="fa-solid fa-arrow-left"></i> <span>হোমে ফিরে যাও</span>
                 </button>
-                <h2 class="text-2xl font-bold text-emerald-900">আরবি হরফ শিক্ষা (أ - ي)</h2>
+                <div class="flex items-center space-x-3">
+                    <h2 class="text-2xl font-bold text-emerald-900">আরবি হরফ শিক্ষা</h2>
+                    <button onclick="openVideoModal('J7JzI0m8pI0', 'আরবি হরফ গান ও ভিডিও')" class="bg-red-500 hover:bg-red-600 text-white px-3 py-1.5 rounded-xl font-bold text-xs flex items-center space-x-1 shadow transition transform hover:scale-105">
+                        <i class="fa-solid fa-circle-play text-base"></i> <span>ভিডিও দেখে শেখো</span>
+                    </button>
+                </div>
             </div>
-            <div id="arabicGrid" class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-4"></div>
+            <div id="arabicGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4"></div>
         </section>
 
         <!-- 6. NUMBERS SECTION -->
@@ -386,7 +401,7 @@
                 <button onclick="showSection('home')" class="bg-white text-emerald-700 px-4 py-2 rounded-xl shadow font-bold flex items-center space-x-2 hover:bg-emerald-50">
                     <i class="fa-solid fa-arrow-left"></i> <span>হোমে ফিরে যাও</span>
                 </button>
-                <h2 class="text-2xl font-bold text-emerald-900">শিক্ষামূলক গেম ও ফান</h2>
+                <h2 class="text-2xl font-bold text-emerald-900">शिक्षামূলক গেম ও ফান</h2>
             </div>
             <div class="bg-white p-8 rounded-3xl shadow-xl max-w-xl mx-auto text-center">
                 <h3 class="text-xl font-bold text-cyan-800 mb-2">মজার বর্ণ মেলাও গেম</h3>
@@ -457,6 +472,22 @@
 
     </main>
 
+    <!-- Video Modal Popup -->
+    <div id="videoModal" class="fixed inset-0 bg-black/70 z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl overflow-hidden w-full max-w-2xl shadow-2xl relative">
+            <div class="bg-emerald-600 text-white p-4 flex justify-between items-center">
+                <h3 id="videoTitle" class="font-bold text-lg flex items-center space-x-2">
+                    <i class="fa-solid fa-circle-play"></i>
+                    <span>ভিডিও টিউটোরিয়াল</span>
+                </h3>
+                <button onclick="closeVideoModal()" class="text-white hover:bg-emerald-700 w-8 h-8 rounded-full flex items-center justify-center font-bold text-xl">✕</button>
+            </div>
+            <div class="p-2 bg-black aspect-video">
+                <iframe id="videoIframe" class="w-full h-full rounded-xl" src="" title="Educational Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
     <!-- Bottom Navigation Bar for Mobile -->
     <nav class="md:hidden bg-white border-t border-gray-200 fixed bottom-0 left-0 right-0 z-50 flex justify-around py-3 shadow-lg">
         <button onclick="showSection('home')" class="text-emerald-700 flex flex-col items-center text-xs font-bold">
@@ -518,6 +549,20 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
+        // ==========================================
+        // VIDEO MODAL SYSTEM
+        // ==========================================
+        function openVideoModal(videoId, title) {
+            document.getElementById('videoTitle').innerHTML = `<i class="fa-solid fa-circle-play"></i> <span>${title}</span>`;
+            document.getElementById('videoIframe').src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+            document.getElementById('videoModal').classList.remove('hidden');
+        }
+
+        function closeVideoModal() {
+            document.getElementById('videoIframe').src = '';
+            document.getElementById('videoModal').classList.add('hidden');
+        }
+
         // =========================================================================
         //  ADVANCED INTERACTIVE VOICE SYSTEM (APU VOICE + KIDS RESPONSE ECHO)
         // =========================================================================
@@ -527,31 +572,30 @@
 
             const voices = window.speechSynthesis.getVoices();
             
-            // 1st Step: Apu's Sweet Voice (Teacher Mode)
+            // 1st Step: Apu's Sweet Voice
             let apuText = `${letterName}! ${letterName} তে ${topicWord}। চলো সোনামণিরা একসাথে বলি, ${letterName} তে ${topicWord}`;
             if(langCode.startsWith('en')) {
                 apuText = `${letterName}! ${letterName} for ${topicWord}. Say with me children, ${letterName} for ${topicWord}`;
             }
 
             const apuUtterance = new SpeechSynthesisUtterance(apuText);
-            apuUtterance.rate = 0.75;  // Slow rate for kids
-            apuUtterance.pitch = 1.35; // Sweet high pitch (Apu tone)
+            apuUtterance.rate = 0.75;  
+            apuUtterance.pitch = 1.35; 
 
-            let apuVoice = voices.find(v => v.lang.includes(langCode.split('-')[0]) && (v.name.includes('Female') || v.name.includes('Google') || v.name.includes('Natural')));
+            let apuVoice = voices.find(v => v.lang.includes('bn') && (v.name.includes('Female') || v.name.includes('Google') || v.name.includes('Natural')));
             if (apuVoice) apuUtterance.voice = apuVoice;
 
-            // 2nd Step: Kids Choir / Response Echo (Higher Pitch & Excited Tone)
+            // 2nd Step: Kids Choir Response
             const kidsUtterance = new SpeechSynthesisUtterance(`${letterName} তে ${topicWord}!`);
             kidsUtterance.rate = 0.85;  
-            kidsUtterance.pitch = 1.6;  // Extra high pitch for kids voice simulation
+            kidsUtterance.pitch = 1.6;  
 
             if (apuVoice) kidsUtterance.voice = apuVoice;
 
-            // Execute Sequentially
             apuUtterance.onend = function() {
                 setTimeout(() => {
                     window.speechSynthesis.speak(kidsUtterance);
-                }, 300); // Short pause before kids repeat
+                }, 300);
             };
 
             window.speechSynthesis.speak(apuUtterance);
@@ -580,7 +624,7 @@
             }
         }
 
-        // ISLAMIC MINDED SWOROBORNO DATA WITH ICONS
+        // ISLAMIC BENGALI SWOROBORNO
         const sworoIslamicData = [
             { c: 'অ', w: 'আল্লাহর অলি', icon: '🕋' },
             { c: 'আ', w: 'আজান', icon: '🕌' },
@@ -605,7 +649,7 @@
                 </div>`;
         });
 
-        // ISLAMIC MINDED BYANJONBORNO DATA WITH ICONS
+        // ISLAMIC BENGALI BYANJONBORNO
         const byanjonIslamicData = [
             { c: 'ক', w: 'কাবা শরীফ', icon: '🕋' },
             { c: 'খ', w: 'খেদমত', icon: '🤲' },
@@ -684,20 +728,55 @@
                 </div>`;
         });
 
-        // Arabic Alphabet
-        const arabicData = ['أ', 'ب', 'ت', 'ث', 'ج', 'ح', 'خ', 'د', 'ذ', 'ر', 'ز', 'س', 'ش', 'ص', 'ض', 'ط', 'ظ', 'ع', 'غ', 'ف', 'ق', 'ك', 'ل', 'م', 'ن', 'هـ', 'و', 'ي'];
+        // ARABIC ALPHABET (ACCURATE PRONUNCIATION & ISLAMIC WORDS)
+        const arabicDataWithWords = [
+            { c: 'أ', n: 'আলিফ', w: 'আল্লাহ', icon: '✨' },
+            { c: 'ب', n: 'বা', w: 'বাইতুল্লাহ', icon: '🕋' },
+            { c: 'ت', n: 'তা', w: 'তাকওয়া', icon: '🤍' },
+            { c: 'ث', n: 'সা', w: 'সাওয়াব', icon: '🌟' },
+            { c: 'ج', n: 'জীম', w: 'জান্নাত', icon: '🏞️' },
+            { c: 'ح', n: 'হা', w: 'হজ', icon: '🕋' },
+            { c: 'خ', n: 'খা', w: 'খালেক', icon: '🌌' },
+            { c: 'د', n: 'দাল', w: 'দোয়া', icon: '🤲' },
+            { c: 'ذ', n: 'যাল', w: 'যিকর', icon: '📿' },
+            { c: 'ر', n: 'রা', w: 'রহমত', icon: '🌧️' },
+            { c: 'ز', n: 'যা', w: 'জাকাত', icon: '💰' },
+            { c: 'س', n: 'সীন', w: 'সালাম', icon: '🤝' },
+            { c: 'ش', n: 'শীন', w: 'শুকরিয়া', icon: '🙏' },
+            { c: 'ص', n: 'ছদ', w: 'স্বালাত', icon: '🛐' },
+            { c: 'ض', n: 'দ্বদ', w: 'দ্বিয়া (আলো)', icon: '💡' },
+            { c: 'ط', n: 'ত্বা', w: 'ত্বাহুরাত (পবিত্রতা)', icon: '🧼' },
+            { c: 'ظ', n: 'জ্বা', w: 'জ্বলুম না করা', icon: '⚖️' },
+            { c: 'ع', n: 'আইন', w: 'ইলম (জ্ঞান)', icon: '📚' },
+            { c: 'غ', n: 'গাইন', w: 'গফুর (ক্ষমাশীল)', icon: '🕊️' },
+            { c: 'ف', n: 'ফা', w: 'ফজর', icon: '🌅' },
+            { c: 'ق', n: 'ক্বাফ', w: 'কুরআন', icon: '📖' },
+            { c: 'ك', n: 'কাফ', w: 'কা’বা', icon: '🕋' },
+            { c: 'ل', n: 'লাম', w: 'লা ইলাহা ইল্লাল্লাহ', icon: '☝️' },
+            { c: 'م', n: 'মীম', w: 'মসজিদ', icon: '🕌' },
+            { c: 'ن', n: 'নূন', w: 'নূর (আলো)', icon: '✨' },
+            { c: 'هـ', n: 'হা', w: 'হেদায়েত', icon: '🛣️' },
+            { c: 'و', w: 'ওয়াজিব', n: 'ওয়াও', icon: '✅' },
+            { c: 'ي', n: 'ইয়া', w: 'ইয়া আল্লাহ', icon: '🤲' }
+        ];
+
         const arabContainer = document.getElementById('arabicGrid');
-        arabicData.forEach(char => {
-            arabContainer.innerHTML += `<div onclick="speakInteractive('${char}', 'হরফ', 'ar-SA')" class="bg-amber-50 hover:bg-amber-100 border-2 border-amber-300 p-5 rounded-xl text-center text-3xl font-bold arabic-text cursor-pointer text-amber-800 shadow-sm">${char}</div>`;
+        arabicDataWithWords.forEach(item => {
+            arabContainer.innerHTML += `
+                <div onclick="speakInteractive('আরবি হরফ: ${item.n}', '${item.w}', 'bn-BD')" class="bg-amber-50 hover:bg-amber-100 border-2 border-amber-300 p-4 rounded-2xl text-center cursor-pointer transition transform hover:scale-105 shadow-sm flex flex-col items-center justify-center">
+                    <div class="text-4xl font-bold arabic-text text-amber-800 mb-1">${item.c}</div>
+                    <div class="text-xl my-1">${item.icon}</div>
+                    <div class="text-xs font-bold text-emerald-800">${item.n} — ${item.w}</div>
+                </div>`;
         });
 
-        // Numbers
+        // NUMBERS
         const numContainer = document.getElementById('numbersGrid');
         for(let i=1; i<=10; i++) {
             numContainer.innerHTML += `<div onclick="speakInteractive('সংখ্যা ${i}', 'সংখ্যা ${i}', 'bn-BD')" class="bg-purple-50 hover:bg-purple-100 border-2 border-purple-300 p-6 rounded-2xl text-center text-3xl font-bold text-purple-700 cursor-pointer shadow">${i}</div>`;
         }
 
-        // Math Game Logic
+        // MATH PROBLEM LOGIC
         function loadMathProblem() {
             const num1 = Math.floor(Math.random() * 5) + 1;
             const num2 = Math.floor(Math.random() * 5) + 1;
@@ -725,7 +804,7 @@
         }
         loadMathProblem();
 
-        // Duas Data
+        // DUAS DATA
         const duasList = [
             {t: 'ঘুমানোর দোয়া', a: 'بِاسْمِكَ اللَّهُمَّ أَمُوتُ وَأَحْيَا', b: 'হে আল্লাহ, আপনার নামে আমি মৃত্যুবরণ করছি এবং জীবনলাভ করছি।'},
             {t: 'খাওয়ার আগের দোয়া', a: 'بِسْمِ اللَّهِ وَعَلَى بَرَكَةِ اللَّهِ', b: 'আল্লাহর নামে এবং আল্লাহর বরকতের সাথে খাবার শুরু করছি।'},
@@ -745,7 +824,7 @@
                 </div>`;
         });
 
-        // Mini Game Logic
+        // MINI GAME LOGIC
         function loadGame() {
             document.getElementById('gameFeedback').innerText = '';
             const opts = ['ক', 'খ', 'গ'].sort(() => Math.random() - 0.5);
@@ -768,7 +847,7 @@
         }
         loadGame();
 
-        // Quiz Logic
+        // QUIZ LOGIC
         const quizData = { q: "ইসলামের মূল ভিত্তি কয়টি?", options: ["৩টি", "৪টি", "৫টি"], correct: 2 };
         document.getElementById('quizQuestion').innerText = quizData.q;
         const qOpts = document.getElementById('quizOptions');
@@ -786,7 +865,7 @@
             }
         }
 
-        // Canvas Drawing Setup
+        // CANVAS DRAWING SETUP
         const canvas = document.getElementById('drawCanvas');
         const ctx = canvas.getContext('2d');
         let painting = false;
