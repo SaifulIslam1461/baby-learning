@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kids Learning Video & Photo</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Smooth Scrolling & TikTok Scroll Snap */
+        .video-container {
+            scroll-snap-type: y mandatory;
+            overflow-y: scroll;
+            height: calc(100vh - 140px);
+        }
+        .video-card {
+            scroll-snap-align: start;
+            height: calc(100vh - 140px);
+        }
+        /* Custom Scrollbar Hide */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-amber-50 font-sans text-gray-800 select-none">
+
+    <!-- Header Navigation -->
+    <header class="bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 text-white p-3 shadow-md sticky top-0 z-50">
+        <div class="max-w-md mx-auto flex justify-between items-center">
+            <h1 class="text-xl font-bold flex items-center gap-2">
+                <i class="fa-solid fa-child-reaching text-yellow-300 text-2xl"></i> Kids Learning
+            </h1>
+            <button onclick="openUploadModal()" class="bg-yellow-400 hover:bg-yellow-500 text-purple-900 font-bold px-3 py-1.5 rounded-full text-sm shadow flex items-center gap-1 active:scale-95 transition">
+                <i class="fa-solid fa-plus-circle"></i> যোগ করুন
+            </button>
+        </div>
+        
+        <!-- Navigation Tabs (Video / Photo) -->
+        <div class="max-w-md mx-auto flex mt-3 bg-white/20 p-1 rounded-xl backdrop-blur-md">
+            <button id="tab-video" onclick="switchTab('video')" class="flex-1 py-1.5 rounded-lg text-center font-bold text-sm bg-white text-purple-700 shadow">
+                <i class="fa-solid fa-circle-play mr-1"></i> ভিডিও
+            </button>
+            <button id="tab-photo" onclick="switchTab('photo')" class="flex-1 py-1.5 rounded-lg text-center font-bold text-sm text-white">
+                <i class="fa-solid fa-image mr-1"></i> ফটো
+            </button>
+        </div>
+    </header>
+
+    <!-- Sub-Header: Search & Categories -->
+    <div class="bg-white border-b border-amber-100 p-2 shadow-sm sticky top-[108px] z-40">
+        <div class="max-w-md mx-auto space-y-2">
+            <!-- Search Bar -->
+            <div class="relative">
+                <input type="text" id="search-input" oninput="renderContent()" placeholder="শিরোনাম খুঁজুন..." class="w-full bg-amber-50 border border-amber-200 rounded-full pl-9 pr-4 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-purple-400">
+                <i class="fa-solid fa-magnifying-glass absolute left-3 top-2.5 text-gray-400 text-xs"></i>
+            </div>
+            
+            <!-- Category Pills -->
+            <div class="flex gap-1.5 overflow-x-auto no-scrollbar py-1 text-xs font-semibold">
+                <button onclick="setCategory('সব')" class="cat-btn bg-purple-600 text-white px-3 py-1 rounded-full whitespace-nowrap shadow-sm">সব</button>
+                <button onclick="setCategory('বাংলা')" class="cat-btn bg-amber-100 text-amber-800 px-3 py-1 rounded-full whitespace-nowrap">বাংলা</button>
+                <button onclick="setCategory('ইংরেজি')" class="cat-btn bg-amber-100 text-amber-800 px-3 py-1 rounded-full whitespace-nowrap">ইংরেজি</button>
+                <button onclick="setCategory('অংক')" class="cat-btn bg-amber-100 text-amber-800 px-3 py-1 rounded-full whitespace-nowrap">অংক</button>
+                <button onclick="setCategory('আরবি')" class="cat-btn bg-amber-100 text-amber-800 px-3 py-1 rounded-full whitespace-nowrap">আরবি</button>
+                <button onclick="setCategory('ইসলামিক')" class="cat-btn bg-amber-100 text-amber-800 px-3 py-1 rounded-full whitespace-nowrap">ইসলামিক</button>
+                <button onclick="setCategory('অন্যান্য')" class="cat-btn bg-amber-100 text-amber-800 px-3 py-1 rounded-full whitespace-nowrap">অন্যান্য</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content Container -->
+    <main class="max-w-md mx-auto relative min-h-[calc(100vh-160px)]">
+        
+        <!-- Video Feed Section (TikTok Style) -->
+        <section id="video-section" class="video-container no-scrollbar relative bg-black">
+            <!-- Dynamic Video Cards Inserted Here -->
+        </section>
+
+        <!-- Photo Gallery Section -->
+        <section id="photo-section" class="hidden p-3 grid grid-cols-2 gap-3 pb-20">
+            <!-- Dynamic Photo Cards Inserted Here -->
+        </section>
+
+        <!-- Empty State Message -->
+        <div id="empty-state" class="hidden flex flex-col items-center justify-center p-8 text-center text-gray-400 mt-12">
+            <i class="fa-solid fa-folder-open text-5xl mb-3 text-amber-300"></i>
+            <p class="font-medium text-gray-600">কোনো ফাইল পাওয়া যায়নি!</p>
+            <p class="text-xs text-gray-400 mt-1">উপরে "+ যোগ করুন" বাটনে চাপ দিয়ে গ্যালারি থেকে ফাইল যুক্ত করুন।</p>
+        </div>
+    </main>
+
+    <!-- Fullscreen Photo Modal -->
+    <div id="photo-modal" class="fixed inset-0 bg-black/90 z-50 hidden flex flex-col items-center justify-center p-4">
+        <button onclick="closePhotoModal()" class="absolute top-4 right-4 text-white text-3xl p-2 z-10"><i class="fa-solid fa-xmark"></i></button>
+        <img id="modal-img" src="" class="max-w-full max-h-[80vh] object-contain rounded-lg">
+        <p id="modal-title" class="text-white mt-3 font-semibold text-lg text-center"></p>
+    </div>
+
+    <!-- Add Content Modal -->
+    <div id="upload-modal" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white w-full max-w-sm rounded-2xl p-5 shadow-2xl space-y-4">
+            <div class="flex justify-between items-center border-b pb-2">
+                <h3 class="font-bold text-lg text-purple-900"><i class="fa-solid fa-cloud-arrow-up text-pink-500"></i> নতুন ফাইল যোগ করুন</h3>
+                <button onclick="closeUploadModal()" class="text-gray-400 hover:text-gray-600 text-xl"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+
+            <form id="upload-form" onsubmit="handleFormSubmit(event)" class="space-y-3">
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 mb-1">ফাইলের ধরন</label>
+                    <select id="file-type" class="w-full bg-gray-50 border border-gray-300 rounded-lg p-2 text-sm focus:ring-2 focus:ring-purple-500 outline-none">
+                        <option value="video">ভিডিও (Video)</option>
+                        <option value="photo">ছবি (Photo)</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 mb-1">ক্যাটাগরি</label>
+                    <select id="file-category" class="w-full bg-gray-50 border border-gray-300 rounded-lg p-2 text-sm focus:ring-2 focus:ring-purple-500 outline-none">
+                        <option value="বাংলা">বাংলা</option>
+                        <option value="ইংরেজি">ইংরেজি</option>
+                        <option value="অংক">অংক</option>
+                        <option value="আরবি">আরবি</option>
+                        <option value="ইসলামিক">ইসলামিক শিক্ষা</option>
+                        <option value="অন্যান্য">অন্যান্য</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 mb-1">শিরোনাম / নাম</label>
+                    <input type="text" id="file-title" required placeholder="যেমন: অ-তে অজগর" class="w-full bg-gray-50 border border-gray-300 rounded-lg p-2 text-sm focus:ring-2 focus:ring-purple-500 outline-none">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 mb-1">গ্যালারি থেকে নির্বাচন করুন</label>
+                    <input type="file" id="file-input" accept="video/*,image/*" required class="w-full text-xs text-gray-500 file:mr-2 file:py-2 file:px-3 file:rounded-full file:border-0 file:text-xs file:font-semibold file:bg-purple-100 file:text-purple-700 hover:file:bg-purple-200">
+                </div>
+
+                <div class="pt-2 flex gap-2">
+                    <button type="button" onclick="closeUploadModal()" class="flex-1 bg-gray-200 text-gray-700 py-2 rounded-xl text-sm font-bold">বাতিল</button>
+                    <button type="submit" id="save-btn" class="flex-1 bg-purple-600 hover:bg-purple-700 text-white py-2 rounded-xl text-sm font-bold shadow-md">সংরক্ষণ করুন</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- IndexedDB Database & Application Logic -->
+    <script>
+        // 1. IndexedDB Initialization
+        let db;
+        const dbName = "KidsLearningDB";
+        const storeName = "mediaStore";
+
+        const request = indexedDB.open(dbName, 1);
+        request.onupgradeneeded = function(e) {
+            db = e.target.result;
+            if (!db.objectStoreNames.contains(storeName)) {
+                db.createObjectStore(storeName, { keyPath: "id", autoIncrement: true });
+            }
+        };
+        request.onsuccess = function(e) {
+            db = e.target.result;
+            renderContent();
+        };
+        request.onerror = function(e) {
+            console.error("IndexedDB Error: ", e);
+        };
+
+        // App State
+        let currentTab = 'video';
+        let currentCategory = 'সব';
+        let mediaItems = [];
+
+        // 2. Tab Switcher
+        function switchTab(tab) {
+            currentTab = tab;
+            const videoBtn = document.getElementById('tab-video');
+            const photoBtn = document.getElementById('tab-photo');
+            const videoSec = document.getElementById('video-section');
+            const photoSec = document.getElementById('photo-section');
+
+            if(tab === 'video') {
+                videoBtn.className = "flex-1 py-1.5 rounded-lg text-center font-bold text-sm bg-white text-purple-700 shadow";
+                photoBtn.className = "flex-1 py-1.5 rounded-lg text-center font-bold text-sm text-white";
+                videoSec.classList.remove('hidden');
+                photoSec.classList.add('hidden');
+            } else {
+                photoBtn.className = "flex-1 py-1.5 rounded-lg text-center font-bold text-sm bg-white text-purple-700 shadow";
+                videoBtn.className = "flex-1 py-1.5 rounded-lg text-center font-bold text-sm text-white";
+                photoSec.classList.remove('hidden');
+                videoSec.classList.add('hidden');
+            }
+            renderContent();
+        }
+
+        // 3. Category Filter
+        function setCategory(cat) {
+            currentCategory = cat;
+            document.querySelectorAll('.cat-btn').forEach(btn => {
+                if(btn.innerText === cat) {
+                    btn.className = "cat-btn bg-purple-600 text-white px-3 py-1 rounded-full whitespace-nowrap shadow-sm";
+                } else {
+                    btn.className = "cat-btn bg-amber-100 text-amber-800 px-3 py-1 rounded-full whitespace-nowrap";
+                }
+            });
+            renderContent();
+        }
+
+        // 4. Read Data from IndexedDB & Render
+        function renderContent() {
+            if(!db) return;
+            const tx = db.transaction(storeName, "readonly");
+            const store = tx.objectStore(storeName);
+            const getAll = store.getAll();
+
+            getAll.onsuccess = function() {
+                mediaItems = getAll.result;
+                const searchQuery = document.getElementById('search-input').value.toLowerCase();
+
+                // Filter Data
+                const filtered = mediaItems.filter(item => {
+                    const matchesTab = item.type === currentTab;
+                    const matchesCat = currentCategory === 'সব' || item.category === currentCategory;
+                    const matchesSearch = item.title.toLowerCase().includes(searchQuery);
+                    return matchesTab && matchesCat && matchesSearch;
+                });
+
+                const videoSec = document.getElementById('video-section');
+                const photoSec = document.getElementById('photo-section');
+                const emptyState = document.getElementById('empty-state');
+
+                if(filtered.length === 0) {
+                    videoSec.innerHTML = '';
+                    photoSec.innerHTML = '';
+                    emptyState.classList.remove('hidden');
+                    return;
+                }
+                emptyState.classList.add('hidden');
+
+                if(currentTab === 'video') {
+                    videoSec.innerHTML = filtered.map((item, idx) => {
+                        const blobUrl = URL.createObjectURL(item.fileBlob);
+                        return `
+                            <div class="video-card w-full relative bg-black flex items-center justify-center">
+                                <video id="video-${item.id}" src="${blobUrl}" class="w-full h-full object-contain" loop playsinline></video>
+                                
+                                <!-- Video Overlay Controls -->
+                                <div class="absolute bottom-6 left-4 right-16 text-white bg-black/40 p-3 rounded-xl backdrop-blur-sm">
+                                    <span class="bg-purple-600 text-xs font-bold px-2 py-0.5 rounded-full mb-1 inline-block">${item.category}</span>
+                                    <h3 class="font-bold text-base truncate">${item.title}</h3>
+                                </div>
+
+                                <!-- Action Buttons (Right Bar) -->
+                                <div class="absolute right-3 bottom-12 flex flex-col gap-4 items-center z-10">
+                                    <button onclick="togglePlay(${item.id})" class="w-12 h-12 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center text-white text-xl shadow">
+                                        <i id="play-icon-${item.id}" class="fa-solid fa-play"></i>
+                                    </button>
+                                    <button onclick="toggleMute(${item.id})" class="w-12 h-12 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center text-white text-xl shadow">
+                                        <i id="mute-icon-${item.id}" class="fa-solid fa-volume-high"></i>
+                                    </button>
+                                    <button onclick="deleteMedia(${item.id})" class="w-12 h-12 bg-red-500/80 backdrop-blur-md rounded-full flex items-center justify-center text-white text-xl shadow">
+                                        <i class="fa-solid fa-trash"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        `;
+                    }).join('');
+                    setupIntersectionObserver();
+                } else {
+                    photoSec.innerHTML = filtered.map(item => {
+                        const blobUrl = URL.createObjectURL(item.fileBlob);
+                        return `
+                            <div class="bg-white rounded-2xl shadow-sm overflow-hidden border border-amber-100 flex flex-col relative group">
+                                <img src="${blobUrl}" onclick="openPhotoModal('${blobUrl}', '${item.title}')" class="w-full h-36 object-cover cursor-pointer">
+                                <div class="p-2 flex justify-between items-center bg-white">
+                                    <div class="overflow-hidden">
+                                        <span class="text-[10px] text-purple-600 font-bold bg-purple-50 px-1.5 py-0.5 rounded">${item.category}</span>
+                                        <p class="text-xs font-bold text-gray-800 truncate mt-0.5">${item.title}</p>
+                                    </div>
+                                    <button onclick="deleteMedia(${item.id})" class="text-red-400 hover:text-red-600 p-1">
+                                        <i class="fa-solid fa-trash-can text-sm"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        `;
+                    }).join('');
+                }
+            };
+        }
+
+        // 5. Video Auto-Play Observer (TikTok Style)
+        let observer;
+        function setupIntersectionObserver() {
+            if(observer) observer.disconnect();
+            observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    const video = entry.target.querySelector('video');
+                    if(!video) return;
+                    const id = video.id.replace('video-', '');
+                    const playIcon = document.getElementById(`play-icon-${id}`);
+
+                    if (entry.isIntersecting) {
+                        video.play().then(() => {
+                            if(playIcon) playIcon.className = 'fa-solid fa-pause';
+                        }).catch(() => {});
+                    } else {
+                        video.pause();
+                        if(playIcon) playIcon.className = 'fa-solid fa-play';
+                    }
+                });
+            }, { threshold: 0.6 });
+
+            document.querySelectorAll('.video-card').forEach(card => observer.observe(card));
+        }
+
+        // Video Helpers
+        function togglePlay(id) {
+            const video = document.getElementById(`video-${id}`);
+            const icon = document.getElementById(`play-icon-${id}`);
+            if(video.paused) {
+                video.play();
+                icon.className = 'fa-solid fa-pause';
+            } else {
+                video.pause();
+                icon.className = 'fa-solid fa-play';
+            }
+        }
+
+        function toggleMute(id) {
+            const video = document.getElementById(`video-${id}`);
+            const icon = document.getElementById(`mute-icon-${id}`);
+            video.muted = !video.muted;
+            icon.className = video.muted ? 'fa-solid fa-volume-xmark' : 'fa-solid fa-volume-high';
+        }
+
+        // 6. Save File to IndexedDB
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            const type = document.getElementById('file-type').value;
+            const category = document.getElementById('file-category').value;
+            const title = document.getElementById('file-title').value;
+            const fileInput = document.getElementById('file-input');
+
+            if(fileInput.files.length === 0) return;
+            const fileBlob = fileInput.files[0];
+
+            const saveBtn = document.getElementById('save-btn');
+            saveBtn.innerText = "সংরক্ষণ হচ্ছে...";
+            saveBtn.disabled = true;
+
+            const tx = db.transaction(storeName, "readwrite");
+            const store = tx.objectStore(storeName);
+
+            const newItem = {
+                type: type,
+                category: category,
+                title: title,
+                fileBlob: fileBlob,
+                createdAt: new Date().getTime()
+            };
+
+            store.add(newItem);
+            tx.oncomplete = function() {
+                saveBtn.innerText = "সংরক্ষণ করুন";
+                saveBtn.disabled = false;
+                closeUploadModal();
+                document.getElementById('upload-form').reset();
+                switchTab(type);
+            };
+        }
+
+        // 7. Delete Item
+        function deleteMedia(id) {
+            if(confirm("আপনি কি নিশ্চিত যে এটি ডিলিট করতে চান?")) {
+                const tx = db.transaction(storeName, "readwrite");
+                const store = tx.objectStore(storeName);
+                store.delete(id);
+                tx.oncomplete = function() {
+                    renderContent();
+                };
+            }
+        }
+
+        // Modal Handlers
+        function openUploadModal() { document.getElementById('upload-modal').classList.remove('hidden'); }
+        function closeUploadModal() { document.getElementById('upload-modal').classList.add('hidden'); }
+        function openPhotoModal(url, title) {
+            document.getElementById('modal-img').src = url;
+            document.getElementById('modal-title').innerText = title;
+            document.getElementById('photo-modal').classList.remove('hidden');
+        }
+        function closePhotoModal() { document.getElementById('photo-modal').classList.add('hidden'); }
+    </script>
+</body>
+</html>
