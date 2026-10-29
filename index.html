@@ -70,8 +70,11 @@
                 </button>
                 
                 <!-- Dropdown Menu -->
-                <div id="dropdown-menu" class="hidden absolute right-0 mt-1 w-48 bg-white rounded-xl shadow-2xl py-2 text-gray-800 z-50 border border-gray-100">
-                    <button onclick="openUploadModal(); toggleDropdown();" class="w-full text-left px-4 py-2.5 text-xs font-bold hover:bg-purple-50 text-purple-700 flex items-center gap-2">
+                <div id="dropdown-menu" class="hidden absolute right-0 mt-1 w-52 bg-white rounded-xl shadow-2xl py-2 text-gray-800 z-50 border border-gray-100">
+                    <button onclick="installAppPrompt(); toggleDropdown();" id="install-menu-btn" class="w-full text-left px-4 py-2.5 text-xs font-bold hover:bg-purple-50 text-emerald-700 flex items-center gap-2">
+                        <i class="fa-solid fa-mobile-screen-button text-base"></i> অ্যাপ ইনস্টল করুন
+                    </button>
+                    <button onclick="openUploadModal(); toggleDropdown();" class="w-full text-left px-4 py-2.5 text-xs font-bold hover:bg-purple-50 text-purple-700 flex items-center gap-2 border-t border-gray-100">
                         <i class="fa-solid fa-plus-circle text-base"></i> ফাইল যোগ করুন
                     </button>
                     <button onclick="openManagementModal(); toggleDropdown();" class="w-full text-left px-4 py-2.5 text-xs font-bold hover:bg-purple-50 text-indigo-700 flex items-center gap-2 border-t border-gray-100">
@@ -197,8 +200,29 @@
 
     <script>
         let db;
+        let deferredPrompt;
         const dbName = "KidsLearningDB";
         const storeName = "mediaStore";
+
+        // PWA Install Prompt Listener
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+        });
+
+        function installAppPrompt() {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                deferredPrompt.userChoice.then((choiceResult) => {
+                    if (choiceResult.outcome === 'accepted') {
+                        console.log('User accepted the install prompt');
+                    }
+                    deferredPrompt = null;
+                });
+            } else {
+                alert("আপনার ব্রাউজার থেকে সরাসরি হোম স্ক্রিনে ইনস্টল করতে ব্রাউজারের থ্রি-ডট (⋮) মেনুতে গিয়ে 'Add to Home Screen' বা 'Install App' এ ক্লিক করুন!");
+            }
+        }
 
         const request = indexedDB.open(dbName, 1);
         request.onupgradeneeded = function(e) {
@@ -435,7 +459,7 @@
                 
                 renderKidsBanner();
                 if(type === 'kids_banner') {
-                    // Stay or do nothing specific
+                    // Do nothing extra
                 } else {
                     switchTab(type);
                 }
