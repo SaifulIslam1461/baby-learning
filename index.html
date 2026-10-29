@@ -10,11 +10,11 @@
         .video-container {
             scroll-snap-type: y mandatory;
             overflow-y: scroll;
-            height: calc(100vh - 115px);
+            height: calc(100vh - 175px);
         }
         .video-card {
             scroll-snap-align: start;
-            height: calc(100vh - 115px);
+            height: calc(100vh - 175px);
         }
         .no-scrollbar::-webkit-scrollbar {
             display: none;
@@ -40,7 +40,7 @@
             </button>
             
             <!-- Dropdown Menu -->
-            <div id="dropdown-menu" class="hidden absolute right-0 mt-2 w-44 bg-white rounded-xl shadow-2xl py-2 text-gray-800 z-50 border border-gray-100">
+            <div id="dropdown-menu" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-2xl py-2 text-gray-800 z-50 border border-gray-100">
                 <button onclick="openUploadModal(); toggleDropdown();" class="w-full text-left px-4 py-2.5 text-xs font-bold hover:bg-purple-50 text-purple-700 flex items-center gap-2">
                     <i class="fa-solid fa-plus-circle text-base"></i> ফাইল যোগ করুন
                 </button>
@@ -50,6 +50,14 @@
             </div>
         </div>
     </header>
+
+    <!-- Kids Photo Banner Section (Top Showcase) -->
+    <div class="bg-gradient-to-r from-indigo-900 via-purple-900 to-pink-900 py-2 px-3 border-b border-purple-800 shadow-inner">
+        <div id="kids-banner-container" class="max-w-md mx-auto flex gap-2.5 overflow-x-auto no-scrollbar items-center">
+            <!-- Dynamic Kids Banner Images will load here -->
+            <div class="text-xs text-purple-300 italic whitespace-nowrap py-1">✨ ম্যানেজমেন্ট থেকে বাচ্চাদের ছবি যুক্ত করুন...</div>
+        </div>
+    </div>
 
     <!-- Sub-Header: Categories & Tabs -->
     <div class="bg-gray-900/90 backdrop-blur-md border-b border-gray-800 px-2 py-1.5 sticky top-[45px] z-40 space-y-1.5">
@@ -74,7 +82,7 @@
     </div>
 
     <!-- Main Content Container -->
-    <main class="max-w-md mx-auto relative min-h-[calc(100vh-115px)]">
+    <main class="max-w-md mx-auto relative min-h-[calc(100vh-175px)]">
         <section id="video-section" class="video-container no-scrollbar relative bg-black">
         </section>
         
@@ -107,6 +115,7 @@
                     <select id="file-type" onchange="toggleCategorySelect()" class="w-full bg-gray-50 border border-gray-300 rounded-lg p-2 text-sm focus:ring-2 focus:ring-purple-500 outline-none">
                         <option value="video">ভিডিও (Video)</option>
                         <option value="photo">ছবি (Photo)</option>
+                        <option value="kids_banner">বাচ্চাদের ছবি (Top Banner)</option>
                     </select>
                 </div>
                 <div id="category-container">
@@ -175,6 +184,7 @@
         request.onsuccess = function(e) {
             db = e.target.result;
             renderContent();
+            renderKidsBanner();
         };
 
         let currentTab = 'video';
@@ -186,10 +196,10 @@
             menu.classList.toggle('hidden');
         }
 
-        // Close dropdown when clicking outside
         window.onclick = function(event) {
             if (!event.target.closest('button')) {
-                document.getElementById('dropdown-menu').classList.add('hidden');
+                const menu = document.getElementById('dropdown-menu');
+                if(menu) menu.classList.add('hidden');
             }
         }
 
@@ -224,6 +234,33 @@
                 }
             });
             renderContent();
+        }
+
+        function renderKidsBanner() {
+            if(!db) return;
+            const tx = db.transaction(storeName, "readonly");
+            const store = tx.objectStore(storeName);
+            const getAll = store.getAll();
+
+            getAll.onsuccess = function() {
+                const allItems = getAll.result;
+                const banners = allItems.filter(item => item.type === 'kids_banner');
+                const bannerContainer = document.getElementById('kids-banner-container');
+
+                if(banners.length === 0) {
+                    bannerContainer.innerHTML = `<div class="text-xs text-purple-300 italic whitespace-nowrap py-1">✨ ম্যানেজমেন্ট থেকে বাচ্চাদের ছবি যুক্ত করুন...</div>`;
+                    return;
+                }
+
+                bannerContainer.innerHTML = banners.map(item => {
+                    const blobUrl = URL.createObjectURL(item.fileBlob);
+                    return `
+                        <div class="flex-shrink-0 w-14 h-14 rounded-full overflow-hidden border-2 border-pink-400 shadow-md cursor-pointer hover:scale-105 transition" onclick="openPhotoModal('${blobUrl}', '${item.title}')">
+                            <img src="${blobUrl}" class="w-full h-full object-cover">
+                        </div>
+                    `;
+                }).join('');
+            }
         }
 
         function renderContent() {
@@ -369,7 +406,11 @@
                 saveBtn.disabled = false;
                 closeUploadModal();
                 document.getElementById('upload-form').reset();
-                switchTab(type);
+                if(type === 'kids_banner') {
+                    renderKidsBanner();
+                } else {
+                    switchTab(type);
+                }
             };
         }
 
@@ -380,6 +421,7 @@
                 store.delete(id);
                 tx.oncomplete = function() {
                     renderContent();
+                    renderKidsBanner();
                     renderManagementList();
                 };
             }
@@ -431,7 +473,7 @@
         function toggleCategorySelect() {
             const type = document.getElementById('file-type').value;
             const categoryContainer = document.getElementById('category-container');
-            if (type === 'photo') {
+            if (type === 'photo' || type === 'kids_banner') {
                 categoryContainer.classList.add('hidden');
             } else {
                 categoryContainer.classList.remove('hidden');
