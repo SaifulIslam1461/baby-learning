@@ -10,11 +10,11 @@
         .video-container {
             scroll-snap-type: y mandatory;
             overflow-y: scroll;
-            height: calc(100vh - 175px);
+            height: calc(100vh - 160px);
         }
         .video-card {
             scroll-snap-align: start;
-            height: calc(100vh - 175px);
+            height: calc(100vh - 160px);
         }
         .no-scrollbar::-webkit-scrollbar {
             display: none;
@@ -27,20 +27,28 @@
 </head>
 <body class="bg-black font-sans text-gray-800 select-none">
 
-    <!-- Top Compact Cute Header -->
-    <header class="bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 text-white px-3 py-2 shadow-md sticky top-0 z-50 flex justify-between items-center">
-        <h1 class="text-sm font-bold flex items-center gap-1.5">
-            <i class="fa-solid fa-child-reaching text-yellow-300 text-lg"></i> Kids Learning
+    <!-- 1. Top Slim & Minimal Header -->
+    <header class="bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 text-white px-3 py-1 shadow-sm sticky top-0 z-50 flex justify-between items-center h-8">
+        <h1 class="text-xs font-bold flex items-center gap-1 tracking-wide">
+            <i class="fa-solid fa-child-reaching text-yellow-300 text-sm"></i> Kids Learning
         </h1>
-        
-        <!-- Three Dot Menu Button -->
-        <div class="relative">
-            <button onclick="toggleDropdown()" class="text-white p-2 rounded-full hover:bg-white/20 transition focus:outline-none">
-                <i class="fa-solid fa-ellipsis-vertical text-lg"></i>
+        <span class="text-[10px] text-white/80 font-medium">অফলাইন ভার্সন</span>
+    </header>
+
+    <!-- 2. Kids Photo Banner Section with Three Dot Menu on Right Corner -->
+    <div class="bg-gradient-to-r from-indigo-950 via-purple-950 to-pink-950 py-1.5 px-3 border-b border-purple-900 shadow-inner relative flex items-center justify-between">
+        <div id="kids-banner-container" class="max-w-[calc(100%-35px)] flex gap-2 overflow-x-auto no-scrollbar items-center">
+            <div class="text-[11px] text-purple-300 italic whitespace-nowrap py-0.5">✨ বাচ্চাদের ছবি যুক্ত করুন...</div>
+        </div>
+
+        <!-- Three Dot Menu Button moved to Kids Photo Layer Right Corner -->
+        <div class="relative flex-shrink-0">
+            <button onclick="toggleDropdown()" class="text-purple-200 hover:text-white p-1 rounded-full hover:bg-white/10 transition focus:outline-none">
+                <i class="fa-solid fa-ellipsis-vertical text-base"></i>
             </button>
             
             <!-- Dropdown Menu -->
-            <div id="dropdown-menu" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-2xl py-2 text-gray-800 z-50 border border-gray-100">
+            <div id="dropdown-menu" class="hidden absolute right-0 mt-1 w-48 bg-white rounded-xl shadow-2xl py-2 text-gray-800 z-50 border border-gray-100">
                 <button onclick="openUploadModal(); toggleDropdown();" class="w-full text-left px-4 py-2.5 text-xs font-bold hover:bg-purple-50 text-purple-700 flex items-center gap-2">
                     <i class="fa-solid fa-plus-circle text-base"></i> ফাইল যোগ করুন
                 </button>
@@ -49,23 +57,15 @@
                 </button>
             </div>
         </div>
-    </header>
-
-    <!-- Kids Photo Banner Section (Top Showcase) -->
-    <div class="bg-gradient-to-r from-indigo-900 via-purple-900 to-pink-900 py-2 px-3 border-b border-purple-800 shadow-inner">
-        <div id="kids-banner-container" class="max-w-md mx-auto flex gap-2.5 overflow-x-auto no-scrollbar items-center">
-            <!-- Dynamic Kids Banner Images will load here -->
-            <div class="text-xs text-purple-300 italic whitespace-nowrap py-1">✨ ম্যানেজমেন্ট থেকে বাচ্চাদের ছবি যুক্ত করুন...</div>
-        </div>
     </div>
 
     <!-- Sub-Header: Categories & Tabs -->
-    <div class="bg-gray-900/90 backdrop-blur-md border-b border-gray-800 px-2 py-1.5 sticky top-[45px] z-40 space-y-1.5">
-        <div class="max-w-md mx-auto flex gap-1 bg-gray-800 p-1 rounded-lg">
-            <button id="tab-video" onclick="switchTab('video')" class="flex-1 py-1 rounded-md text-center font-bold text-xs bg-purple-600 text-white shadow">
+    <div class="bg-gray-900/95 backdrop-blur-md border-b border-gray-800 px-2 py-1 sticky top-[32px] z-40 space-y-1">
+        <div class="max-w-md mx-auto flex gap-1 bg-gray-800 p-0.5 rounded-md">
+            <button id="tab-video" onclick="switchTab('video')" class="flex-1 py-1 rounded text-center font-bold text-xs bg-purple-600 text-white shadow">
                 <i class="fa-solid fa-video mr-1"></i> ভিডিও
             </button>
-            <button id="tab-photo" onclick="switchTab('photo')" class="flex-1 py-1 rounded-md text-center font-bold text-xs text-gray-300">
+            <button id="tab-photo" onclick="switchTab('photo')" class="flex-1 py-1 rounded text-center font-bold text-xs text-gray-300">
                 <i class="fa-solid fa-image mr-1"></i> ছবি
             </button>
         </div>
@@ -81,9 +81,9 @@
         </div>
     </div>
 
-    <!-- Main Content Container -->
-    <main class="max-w-md mx-auto relative min-h-[calc(100vh-175px)]">
-        <section id="video-section" class="video-container no-scrollbar relative bg-black">
+    <!-- Main Content Container with Centered Video Layout -->
+    <main class="max-w-md mx-auto relative min-h-[calc(100vh-160px)]">
+        <section id="video-section" class="video-container no-scrollbar relative bg-black flex flex-col items-center justify-center">
         </section>
         
         <section id="photo-section" class="hidden p-3 grid grid-cols-2 gap-3 pb-20 pt-4">
@@ -211,13 +211,13 @@
             const photoSec = document.getElementById('photo-section');
 
             if(tab === 'video') {
-                videoBtn.className = "flex-1 py-1 rounded-md text-center font-bold text-xs bg-purple-600 text-white shadow";
-                photoBtn.className = "flex-1 py-1 rounded-md text-center font-bold text-xs text-gray-300";
+                videoBtn.className = "flex-1 py-1 rounded text-center font-bold text-xs bg-purple-600 text-white shadow";
+                photoBtn.className = "flex-1 py-1 rounded text-center font-bold text-xs text-gray-300";
                 videoSec.classList.remove('hidden');
                 photoSec.classList.add('hidden');
             } else {
-                photoBtn.className = "flex-1 py-1 rounded-md text-center font-bold text-xs bg-purple-600 text-white shadow";
-                videoBtn.className = "flex-1 py-1 rounded-md text-center font-bold text-xs text-gray-300";
+                photoBtn.className = "flex-1 py-1 rounded text-center font-bold text-xs bg-purple-600 text-white shadow";
+                videoBtn.className = "flex-1 py-1 rounded text-center font-bold text-xs text-gray-300";
                 photoSec.classList.remove('hidden');
                 videoSec.classList.add('hidden');
             }
@@ -248,14 +248,14 @@
                 const bannerContainer = document.getElementById('kids-banner-container');
 
                 if(banners.length === 0) {
-                    bannerContainer.innerHTML = `<div class="text-xs text-purple-300 italic whitespace-nowrap py-1">✨ ম্যানেজমেন্ট থেকে বাচ্চাদের ছবি যুক্ত করুন...</div>`;
+                    bannerContainer.innerHTML = `<div class="text-[11px] text-purple-300 italic whitespace-nowrap py-0.5">✨ বাচ্চাদের ছবি যুক্ত করুন...</div>`;
                     return;
                 }
 
                 bannerContainer.innerHTML = banners.map(item => {
                     const blobUrl = URL.createObjectURL(item.fileBlob);
                     return `
-                        <div class="flex-shrink-0 w-14 h-14 rounded-full overflow-hidden border-2 border-pink-400 shadow-md cursor-pointer hover:scale-105 transition" onclick="openPhotoModal('${blobUrl}', '${item.title}')">
+                        <div class="flex-shrink-0 w-11 h-11 rounded-full overflow-hidden border-2 border-pink-400 shadow-md cursor-pointer hover:scale-105 transition" onclick="openPhotoModal('${blobUrl}', '${item.title}')">
                             <img src="${blobUrl}" class="w-full h-full object-cover">
                         </div>
                     `;
@@ -294,9 +294,9 @@
                         const blobUrl = URL.createObjectURL(item.fileBlob);
                         return `
                             <div class="video-card w-full relative bg-black flex items-center justify-center">
-                                <video id="video-${item.id}" src="${blobUrl}" class="w-full h-full object-contain" loop playsinline></video>
+                                <video id="video-${item.id}" src="${blobUrl}" class="w-full h-full object-contain mx-auto" loop playsinline></video>
                                 
-                                <div class="absolute bottom-6 left-4 right-16 text-white bg-black/40 p-3 rounded-xl backdrop-blur-sm">
+                                <div class="absolute bottom-6 left-4 right-20 text-white bg-black/50 p-3 rounded-xl backdrop-blur-sm">
                                     <span class="bg-purple-600 text-[10px] font-bold px-2 py-0.5 rounded-full mb-1 inline-block">${item.category}</span>
                                     <h3 class="font-bold text-base truncate">${item.title}</h3>
                                 </div>
