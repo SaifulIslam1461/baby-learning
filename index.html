@@ -23,7 +23,7 @@
             flex: 1;
             scroll-snap-type: y mandatory;
             overflow-y: scroll;
-            height: calc(100vh - 160px);
+            height: 100%;
             position: relative;
         }
         .video-card {
@@ -404,7 +404,7 @@
         function handleFormSubmit(e) {
             e.preventDefault();
             const type = document.getElementById('file-type').value;
-            const category = document.getElementById('file-category').value;
+            const category = (type === 'photo' || type === 'kids_banner') ? 'অন্যান্য' : document.getElementById('file-category').value;
             const title = document.getElementById('file-title').value;
             const fileInput = document.getElementById('file-input');
 
@@ -426,17 +426,25 @@
                 createdAt: new Date().getTime()
             };
 
-            store.add(newItem);
-            tx.oncomplete = function() {
+            const requestAdd = store.add(newItem);
+            requestAdd.onsuccess = function() {
                 saveBtn.innerText = "সংরক্ষণ করুন";
                 saveBtn.disabled = false;
                 closeUploadModal();
                 document.getElementById('upload-form').reset();
+                
+                renderKidsBanner();
                 if(type === 'kids_banner') {
-                    renderKidsBanner();
+                    // Stay or do nothing specific
                 } else {
                     switchTab(type);
                 }
+            };
+            requestAdd.onerror = function(err) {
+                console.error("Error saving:", err);
+                saveBtn.innerText = "সংরক্ষণ করুন";
+                saveBtn.disabled = false;
+                alert("সংরক্ষণ করতে সমস্যা হয়েছে!");
             };
         }
 
